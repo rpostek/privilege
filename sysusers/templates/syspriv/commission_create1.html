@@ -1,0 +1,55 @@
+{% extends 'syspriv/base.html' %}
+{% load syspriv_extras %}
+{% block title %}
+Zmiana uprawnień
+{% endblock %}
+
+
+{% block content %}
+{% for alert in alerts %}
+<div class="alert alert-{{alert.type}}" role="alert">
+  {{alert.text|safe}}
+</div>
+{% endfor %}
+
+<p>Krok {{ wizard.steps.step1 }} z {{ wizard.steps.count }}</p>
+<h1>{{ person.full_name }}</h1>
+<form action="" method="post">
+  {% csrf_token %}
+  {{ wizard.management_form }}
+
+    {% comment %}
+        {{ wizard.form }}
+    {% endcomment %}
+
+<div>
+    <fieldset>
+  <legend>Uprawnienia:</legend>
+<div id="id_1-roles">
+    <table class="table table-sm">
+       {% for role in wizard.form.fields.roles.choices.queryset %}
+        {% ifchanged role.system %}
+        <tr><td colspan="4" style="background-color: #FEF5E7;"><a data-bs-toggle="collapse" href="#" data-bs-target=".{{role.system|cut:' '}}"><b>{{ role.system.display_name }}</b></a>  &nbsp;<i>{{role.system.description}}</i></td></tr>
+        {% endifchanged %}
+        {% cycle '100%' '95%' as brightness silent %}
+    <tr class="collapse {{ role.system|cut:' ' }}" style="filter: brightness({{ brightness }});">
+        <td style="padding-left: 8px;padding-right: 8px;text-align:center"> <label for="id_1-roles_{{ forloop.counter0 }}"><input type="checkbox" name="1-roles" value="{{role.id}}" {% if role in wizard.form.initial.roles %} checked {% endif %}  id="id_1-roles_{{ forloop.counter0 }}"> </label></td>
+        <td style="width: 20%"> {{ role.system }}</td>
+        <td> {{ role.name }}</td>
+        <td> {{ role.description }}</td>
+    </tr>
+
+        {% endfor %}
+</table>
+</div>
+    </fieldset>
+</div>
+    <div style="padding: 10px;">
+  {% if wizard.steps.prev %}
+    <button name="wizard_goto_step" type="submit" type="button" class="btn btn-secondary" value="{{ wizard.steps.first }}">&lt;&lt;</button>
+  <button name="wizard_goto_step" type="submit" class="btn btn-secondary" value="{{ wizard.steps.prev }}">&lt;</button>
+  {% endif %}
+  <input type="submit" class="btn btn-primary" value="OK"/>
+   </div>
+</form>
+{% endblock %}

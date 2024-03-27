@@ -1,0 +1,120 @@
+roles:
+  - role: UP1
+    description: 'dodawanie i edycja danych'
+    users:
+      - first_name: ADMINISTRATOR
+        last_name: ''
+      - first_name: Paweł
+        last_name: Bedra
+      - first_name: Anna
+        last_name: Dąbrowska
+      - first_name: Adam
+        last_name: Gawlikowski
+      - first_name: Agnieszka
+        last_name: Gozdecka
+      - first_name: Bożena
+        last_name: Gradys-Nowacka
+      - first_name: Hubert
+        last_name: Kalinowski
+      - first_name: Hanna
+        last_name: Okulus
+      - first_name: Wiesława
+        last_name: Piekut
+  - role: UP2
+    description: 'usuwanie danych'
+    users:
+      - first_name: ADMINISTRATOR
+        last_name: ''
+      - first_name: Paweł
+        last_name: Bedra
+      - first_name: Anna
+        last_name: Dąbrowska
+      - first_name: Bożena
+        last_name: Gradys-Nowacka
+      - first_name: Hubert
+        last_name: Kalinowski
+      - first_name: Hanna
+        last_name: Okulus
+      - first_name: Wiesława
+        last_name: Piekut
+  - role: UP3
+    description: 'dostęp do wszystkich dokumentów'
+    users:
+      - first_name: ADMINISTRATOR
+        last_name: ''
+      - first_name: Paweł
+        last_name: Bedra
+      - first_name: Anna
+        last_name: Dąbrowska
+      - first_name: Adam
+        last_name: Gawlikowski
+      - first_name: Agnieszka
+        last_name: Gozdecka
+      - first_name: Bożena
+        last_name: Gradys-Nowacka
+      - first_name: Hubert
+        last_name: Kalinowski
+      - first_name: Hanna
+        last_name: Okulus
+      - first_name: Wiesława
+        last_name: Piekut
+  - role: UP4
+    description: 'modyfikacja wzorów dokumentów'
+    users:
+      - first_name: ADMINISTRATOR
+        last_name: ''
+      - first_name: Paweł
+        last_name: Bedra
+      - first_name: Anna
+        last_name: Dąbrowska
+      - first_name: Agnieszka
+        last_name: Gozdecka
+      - first_name: Bożena
+        last_name: Gradys-Nowacka
+      - first_name: Hubert
+        last_name: Kalinowski
+      - first_name: Hanna
+        last_name: Okulus
+      - first_name: Wiesława
+        last_name: Piekut
+  - role: UP5
+    description: 'dostęp do opcji programu'
+    users:
+      - first_name: ADMINISTRATOR
+        last_name: ''
+      - first_name: Paweł
+        last_name: Bedra
+      - first_name: Anna
+        last_name: Dąbrowska
+      - first_name: Adam
+        last_name: Gawlikowski
+      - first_name: Agnieszka
+        last_name: Gozdecka
+      - first_name: Bożena
+        last_name: Gradys-Nowacka
+      - first_name: Hubert
+        last_name: Kalinowski
+      - first_name: Hanna
+        last_name: Okulus
+      - first_name: Wiesława
+        last_name: Piekut
+  - role: UP6
+    description: 'edycja danych przychodzących z kancelarii'
+    users:
+      - first_name: ADMINISTRATOR
+        last_name: ''
+  - role: UP7
+    description: 'pisma z kancelarii tylko te, które są skierowane do użytkownika'
+    users:
+      - first_name: ADMINISTRATOR
+        last_name: ''
+  - role: UP8
+    description: 'zablokowana edycja i usuwanie danych w bazie'
+    users:
+      - first_name: ADMINISTRATOR
+        last_name: ''
+  - role: UP9
+    description: 'zablokowane edycja danych w słownikach'
+    users:
+      - first_name: ADMINISTRATOR
+        last_name: ''

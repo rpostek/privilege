@@ -1,0 +1,36 @@
+{% extends 'syspriv/base.html' %}
+{% block title %}
+    Wydział {{ department }} - lista uprawnień pracowników
+{% endblock %}
+
+{% block content %}
+    {% if department %}
+        <h1>{{ department }}<br>Lista uprawnień pracowników</h1>
+<table style="min-width:80%; border: 1px solid black;">
+    {% for system in systems %}
+    <tr style="border: 1px solid black; background-color: burlywood; font-size: 150%; font-weight: bold;">
+        {% comment %}
+            <td style="padding-left: 5px;"><a href="{% url 'system-detail' id=system.system.id %}" style="text-decoration: none;color:navy;">{{ system.system.display_name }}</a> <i style="font-size: 70%; font-weight: normal;">{{system.system.description}}</i></td>
+        {% endcomment %}
+        <td style="padding-left: 5px;"><span style="text-decoration: none;color:navy;">{{ system.system.display_name }}</span> <i style="font-size: 70%; font-weight: normal;">{{system.system.description}}</i></td>
+    </tr>
+    {% for role in system.roles %}
+        <tr style="border: 1px solid black; background-color: antiquewhite;">
+            <td style="padding-left: 15px;"><b>{{ role.role.name }}</b>: <i>{{ role.role.description }}</i></td>
+        </tr>
+        {% for u in role.users %}
+            <tr>
+                {% comment %}
+                <td  style="padding-left: 30px;"><a href="{% url 'person-detail' id=u.id %}" style="text-decoration: none;color:navy;">{{ u.full_name }}</a></td>
+                {% endcomment %}
+                <td  style="padding-left: 30px;"><span style="text-decoration: none;color:navy;">{{ u.full_name }}</span></td>
+            </tr>
+        {% endfor %}
+        {% endfor %}
+    {% endfor %}
+
+</table>
+
+    {% endif %}
+{% endblock %}
+

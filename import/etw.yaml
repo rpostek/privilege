@@ -1,0 +1,16 @@
+roles:
+  - role: użytkownik
+    description: ''
+    users:
+    - login: emikolajczuk@um.warszawa.pl
+      first_name: Eliza
+      last_name: 'Mikołajczuk vel Kalinowska'
+    - login: j.nojszewska@um.warszawa.pl
+      first_name: Joanna
+      last_name: Nojszewska
+  - role: administrator
+    description: ''
+    users:
+    - login: rpostek@um.warszawa.pl
+      first_name: Robert
+      last_name: Postek

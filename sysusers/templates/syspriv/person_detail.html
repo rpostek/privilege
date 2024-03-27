@@ -1,0 +1,37 @@
+{% extends 'syspriv/base.html' %}
+
+{% block title %}
+Pracownik {{ selected_user.full_name }} - lista uprawnień
+{% endblock %}
+
+{% block content %}
+<p class="h1">{{ selected_user.full_name }}</p>
+<p>{{selected_user.office}}<br>
+{{selected_user.department}}</p>
+{% if systems %}
+<table class="table table-sm">
+    <thead>
+    <tr style="background-color:antiquewhite;filter: brightness(95%);">
+        <th style="background-color:antiquewhite;filter: brightness(95%);text-align:center;">system</th>
+        <th style="background-color:antiquewhite;filter: brightness(95%);text-align:center;">rola</th>
+        <th style="background-color:antiquewhite;filter: brightness(95%);text-align:center;">opis</th>
+        <th style="background-color:antiquewhite;filter: brightness(95%);text-align:center;">ID roli</th>
+    </tr>
+    </thead>
+    {% for d in systems %}
+        {% for role in d.roles %}
+            <tr>
+                {% if forloop.first %}
+                <td rowspan="{{ d.roles|length }}" style="text-align:center; border: 1px solid;background-color:{% cycle 'antiquewhite' 'white' %};">
+                    <b><a href="{% url 'system-detail' id=d.system.id %}">{{ d.system.display_name }}</a></b><br>({{ d.system.server_name }})
+                </td>
+            {% endif %}
+            <td style="filter: brightness({% cycle '100%' '95%' %});">{{ role.name }}</td>
+            <td style="filter: brightness({% cycle '100%' '95%' %});">{{ role.description }}</td>
+            <td style="text-align:right;filter: brightness({% cycle '100%' '95%' %});">{{ role.internal_id }}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+{% endblock %}

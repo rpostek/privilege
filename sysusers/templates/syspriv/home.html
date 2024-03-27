@@ -1,0 +1,45 @@
+{% extends 'syspriv/base.html' %}
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+<H3>
+  Zalogowany użytkownik {{ user }}
+  {% for group in groups %}
+    <span class="badge bg-success"; style="font-size: 70%;">{{group}}</span>
+  {% endfor %}
+</H3>
+{% if ad_user %}
+  {{ad_user.first_name}} {{ad_user.last_name}}<br/>
+  <p><i>{{ ad_user.office }}<br/>{{ ad_user.department }}</i></p>
+
+
+  {% if 'master' in groups %}
+  <p>Dostęp do wszystkich systemów</p>
+  {% else %}
+  <p>Dostęp do systemów:</p>
+  <ul>
+    {% for system in systems_allowed %}
+    <li>{{system}}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+{% endif %}
+{% for alert in alerts %}
+<div class="alert alert-{{alert.type}}" role="alert">
+  {{alert.text}}
+</div>
+{% endfor %}
+<hr>
+Weryfikacja następujących systemów:
+<ul>
+  <li>Estima</li>
+  <li>eTW</li>
+  <li>Karta Dużej Rodziny</li>
+  <li>shared mailboxes</li>
+  <li>rorum</li>
+  <li>sms</li>
+</ul>
+wymaga ręcznej aktualizacji plików YAML.
+{% endblock %}

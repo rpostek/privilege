@@ -1,0 +1,24 @@
+{% extends 'syspriv/base.html' %}
+{% block title %}
+    Lista wydziałów
+{% endblock %}
+
+{% block content %}
+        <h1>Biura/dzielnice/wydziały</h1>
+<table class="table table-sm">
+        {% for department in departments %}
+            {% ifchanged department.office %}
+                <tr><td style="background-color:khaki;"><h3>{{ department.office }}</h3></td></tr>
+            {% endifchanged %}
+            {% cycle '100%' '95%' as brightness silent %}
+            <tr>
+                <td style="filter: brightness({{ brightness }});">
+                    <a href="{% url 'department-detail' id=department.id %}" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                        {{ department.name }}
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+</table>
+{% endblock %}
+

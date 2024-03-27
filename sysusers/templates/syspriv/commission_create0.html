@@ -1,0 +1,27 @@
+{% extends 'syspriv/base.html' %}
+{% block title %}
+Zmiana uprawnień
+{% endblock %}
+
+
+{% block content %}
+{% for alert in alerts %}
+<div class="alert alert-{{alert.type}}" role="alert">
+  {{alert.text|safe}}
+</div>
+{% endfor %}
+
+<p>Krok {{ wizard.steps.step1 }} z {{ wizard.steps.count }}</p>
+<form action="" method="post">
+  {% csrf_token %}
+  {{ wizard.management_form }}
+    {{ wizard.form }}
+  {% if wizard.steps.prev %}
+  <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">&lt;&lt;</button>
+  <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">&lt;</button>
+  {% endif %}
+  <div style="padding: 10px;">
+    <input class="btn btn-primary" type="submit" value="OK"/>
+  </div>
+</form>
+{% endblock %}

@@ -1,0 +1,25 @@
+<table class="table table-sm">
+    <thead>
+    <tr>
+        <th>system</th>
+        <th>rola</th>
+        <th>opis</th>
+        <th>ID roli</th>
+    </tr>
+    </thead>
+    {% for d in systems %}
+        {% for role in d.role_set.all|dictsort:"name" %}
+            <tr>
+            {% if forloop.first %}
+                <td rowspan="{{ d.role_set.all|length }}" style="text-align:center; border: 1px solid;background-color:{% cycle 'antiquewhite' 'white' %};">
+                    <b>{{ d.display_name }}</b><br>({{ d.server_name }})
+                </td>
+            {% endif %}
+            <td>{{ role.name }}</td>
+            <td>{{ role.description }}</td>
+            <td style="text-align:right;">{{ role.internal_id }}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+

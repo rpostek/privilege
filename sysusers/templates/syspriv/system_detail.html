@@ -1,0 +1,53 @@
+{% extends 'syspriv/base.html' %}
+
+{% block title %}
+System {{ system.display_name }} - lista uprawnień
+{% endblock %}
+
+{% block content %}
+<h1>parametry systemu {{ system.display_name }}</h1>
+<table style="font-size:100%;">
+    <tr>
+        <td>nazwa serwera:</td><td style="padding-left:40px;">{{system.server_name}}</td>
+    </tr>
+    <tr>
+        <td>opis:</td><td style="padding-left:40px;">{{system.description}}</td>
+    </tr>
+    <tr>
+        <td>typ bazy danych:</td><td style="padding-left:40px;">{{system.get_db_type_display }}</td>
+    </tr>
+    <tr>
+        <td>nazwa bazy danych:</td><td style="padding-left:40px";>{{system.database}}</td>
+    </tr>
+    <tr>
+        <td>czas aktualizacji:</td><td style="padding-left:40px;">{{system.update_time|date:'Y-m-d H:i'}}</td>
+    </tr>
+</table>
+<a type="button" class="btn btn-info" href="{% url 'system-people' id=system.id %}" style="font-size:110%;margin:20px;background-color:violet;border-color:violet;">użytkownicy systemu</a>
+
+<table class="table table-striped table-sm">
+    <thead style="text-align:center;">
+    <tr>
+        <th>rola</th>
+        <th>opis</th>
+        <th style="width:100px;">liczba kont</th>
+        <th>ID roli</th>
+    </tr>
+    </thead>
+    {% for role in roles %}
+    <tr>
+    {% if role.no_of_users == 0 %}
+        <td style="color:silver;">{{ role.name }}</td>
+        <td style="color:silver;">{{ role.description }}</td>
+        <td style="text-align:right;color:silver;padding-right:20px;">{{role.no_of_users}}</td>
+        <td style="text-align:right;color:silver;">{{ role.internal_id }}</td>
+    {% else %}
+        <td>{{ role.name }}</td>
+        <td>{{ role.description }}</td>
+        <td style="text-align:right;padding-right:20px;">{{role.no_of_users}}</td>
+        <td style="text-align:right;">{{ role.internal_id }}</td>
+    {% endif %}
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

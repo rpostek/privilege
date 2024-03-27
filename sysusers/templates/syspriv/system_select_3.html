@@ -1,0 +1,11 @@
+{% extends 'syspriv/base.html' %}
+{% block title %}
+System {{ system.display_name }} - lista użytkowników
+{% endblock %}
+
+{% block content %}
+    {% if system %}
+        <h1>Lista użytkowników w systemie {{ system.display_name }}</h1>
+        {% include 'syspriv/include_users_in_systems_2.html' %}
+    {% endif %}
+{% endblock %}

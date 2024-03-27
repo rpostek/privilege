@@ -1,0 +1,14 @@
+{% extends 'syspriv/base.html' %}
+{% block title %}
+    Lista pracowników
+{% endblock %}
+
+{% block content %}
+        <h1>Pracownicy</h1>
+<table class="table-sm" style="width:500px;">
+    {% for person in people %}
+        <tr><td style="background-color:{% cycle 'white' 'aliceblue' %};"><a href="{% url 'person-detail' id=person.id %}" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">{{ person.full_name }}</a></td></tr>
+    {% endfor %}
+</table>
+{% endblock %}
+

@@ -1,0 +1,102 @@
+roles:
+  - role: wesola.wbk
+    description: wesola.wbk@um.warszawa.pl
+    users:
+      - first_name: Joanna
+        last_name: Nojszewska
+      - first_name: Eliza
+        last_name: 'Mikołajczuk vel Kalinowska'
+      - first_name: Monika
+        last_name: Lange
+      - first_name: Agnieszka
+        last_name: Kowalczyk
+      - first_name: Magdalena
+        last_name: Kluś
+      - first_name: Katarzyna
+        last_name: Popowicz
+      - first_name: Katarzyna
+        last_name: Maćkowiak
+      - first_name: Dominika
+        last_name: Kucińska
+  - role: wesola.rpd
+    description: wesola.rpd@um.warszawa.pl
+    users:
+      - first_name: Katarzyna
+        last_name: Popowicz
+      - first_name: Dorota
+        last_name: Gajewska
+  - role: wesola.edukacjaprzedszkolna
+    description: wesola.edukacjaprzedszkolna@um.warszawa.pl
+    users:
+      - first_name: Renata
+        last_name: Mroczkowska
+      - first_name: Dorota
+        last_name: Gajewska
+  - role: Wesola.urzad
+    description: Wesola.urzad@um.warszawa.pl
+    users:
+      - first_name: Małgorzata
+        last_name: Kowalczyk
+      - first_name: Katarzyna
+        last_name: Łysiak
+      - first_name: Elżbieta
+        last_name: Bareja
+      - first_name: Iwona
+        last_name: Ługowska
+  - role: kadry.udwesola
+    description: kadry.udwesola@um.warszawa.pl
+    users:
+      - first_name: Marta
+        last_name: Błaszczak
+      - first_name: Dorota
+        last_name: Knaga
+      - first_name: Kinga
+        last_name: Kaniuka
+  - role: 'Sekretariat UD Wesola'
+    description: Sekretariat.udwesola@um.warszawa.pl
+    users:
+      - first_name: Hanna
+        last_name: Dąbkowska
+      - first_name: Dorota
+        last_name: Gajewska
+      - first_name: Natalia
+        last_name: Siwek
+      - first_name: Izabela
+        last_name: Grączewska
+      - first_name: Natalia
+        last_name: Wójcik
+  - role: 'Konsultacje Wesoła'
+    description: konsultacje.wesola@um.warszawa.pl
+    users:
+      - first_name: Dorota
+        last_name: Gajewska
+  - role: 'wesola.or'
+    description: wesola.or@um.warszawa.pl
+    users:
+      - first_name: Dominika
+        last_name: Multan
+      - first_name: Dorota
+        last_name: Gajewska
+      - first_name: Izabela
+        last_name: Grączewska
+  - role: 'wesola.rada'
+    description: wesola.rada@um.warszawa.pl
+    users:
+      - first_name: Dominika
+        last_name: Multan
+      - first_name: Dorota
+        last_name: Gajewska
+      - first_name: Izabela
+        last_name: Grączewska
+  - role: 'Wesola.sekretariat'
+    description: Wesola.sekretariat@um.warszawa.pl
+    users:
+      - first_name: Hanna
+        last_name: Dąbkowska
+      - first_name: Dorota
+        last_name: Gajewska
+      - first_name: Natalia
+        last_name: Siwek
+      - first_name: Natalia
+        last_name: Wójcik
+

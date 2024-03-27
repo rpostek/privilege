@@ -1,0 +1,27 @@
+{% extends 'syspriv/base.html' %}
+
+{% block title %}
+    Lista wniosków
+{% endblock %}
+
+{% block content %}
+<p class="h1">lista wniosków</p>
+   <form method="get">
+        {{ filter.form.as_p }}
+        <input type="submit" />
+    </form>
+<br>
+     <table style="min-width:70%;">
+        <tr style="background-color: #FEF5E7; border:1px solid;"><th>numer</th><th>pracownik</th><th>zlecił</th><th>data zlecenia</th></tr>
+{% for commission in filter.qs %}
+    {% cycle '100%' '95%' as brightness silent %}
+    <tr style="filter: brightness({{ brightness }}); border:1px solid; background-color:white;">
+        <td>{{ commission.display_id|stringformat:"05d" }}</td>
+        <td>{{ commission.person_first_name}} {{ commission.person_last_name}}</td>
+        <td>{{ commission.manager_first_name}} {{ commission.manager_last_name}}</td>
+        <td>{{ commission.request_time|date:"Y-m-d H:i" }}</td>
+    </tr>
+
+{% endfor %}
+</table>
+{% endblock %}

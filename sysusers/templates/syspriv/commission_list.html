@@ -1,0 +1,52 @@
+{% extends 'syspriv/base.html' %}
+
+{% block title %}
+    Lista wniosków
+{% endblock %}
+
+{% block content %}
+<div style="padding: 10px;">
+    <a href="{% url 'commission-create' %}" class="btn btn-warning">nowy wniosek</a>
+</div>
+{% if object_list %}
+    <p class="h1">lista wniosków</p>
+    <table style="min-width:70%;">
+        <tr style="background-color: #FEF5E7; border:1px solid;text-align: center;"><th>numer</th><th>pracownik</th><th>zlecił</th><th>data zlecenia</th></tr>
+{% for commission in object_list %}
+    {% cycle '100%' '95%' as brightness silent %}
+    <tr style="filter: brightness({{ brightness }}); border:1px solid; background-color:white;">
+        <td style="text-align: center; padding-right: 8px;"><a href="{% url 'commission-detail' commission.id %}">{{ commission.display_id|stringformat:"05d" }}</a></td>
+        <td>{{ commission.person_first_name}} {{ commission.person_last_name}}</td>
+        <td>{{ commission.manager_first_name}} {{ commission.manager_last_name}}</td>
+        <td style="text-align: center;">{{ commission.request_time|date:"Y-m-d H:i" }}</td>
+    </tr>
+
+{% endfor %}
+</table>
+
+{% if page_obj.has_other_pages %}
+<div style="padding:10px; width: 70%;">
+<ul class="pagination justify-content-center">
+    {% if page_obj.has_previous %}
+      <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+    {% endif %}
+    {% for i in page_obj.paginator.page_range %}
+      {% if page_obj.number == i %}
+        <li class="page-item active"><span class="page-link">{{ i }}</span></li>
+      {% else %}
+        <li class="page-item"><a href="?page={{ i }}" class="page-link">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <li class="page-item"><a href="?page={{ page_obj.next_page_number }}" class="page-link">&raquo;</a></li>
+    {% else %}
+      <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+</div>
+{% endif %}
+
+{% endblock %}

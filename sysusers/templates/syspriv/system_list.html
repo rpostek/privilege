@@ -1,0 +1,14 @@
+{% extends 'syspriv/base.html' %}
+{% block title %}
+    Lista systemów
+{% endblock %}
+
+{% block content %}
+        <h1>Systemy</h1>
+<table class="table-sm" style="width:500px;">
+    {% for system in systems %}
+        <tr><td style="background-color:#FEEFFF; filter: brightness({% cycle '100' '90' %}%);"><a href="{% url 'system-detail' id=system.id %}" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" style="padding-left:20px;">{{ system.display_name }}</a></td></tr>
+    {% endfor %}
+</table>
+{% endblock %}
+

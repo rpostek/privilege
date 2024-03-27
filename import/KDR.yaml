@@ -1,0 +1,139 @@
+roles:
+  - role: "Kurs e-learning obsługa wniosków i poczty"
+    description: "Kurs z pełnego zakresu obsługi wniosków o przyznanie karty KDR lub wydanie duplikatu karty złożonych lub przesłanych do danego urzędu gminy"
+    users:
+    - login: 1465158_user06
+      first_name: Joanna
+      last_name: Kowalczyk
+    - login: a.piasecka
+      first_name: Agnieszka
+      last_name: Piasecka
+    - login: rpostek
+      first_name: Robert
+      last_name: Postek
+  - role: "Kurs e-learning raporty i sprawozdania z obsługi wniosków"
+    description: "Kurs z tworzenia raportów i sprawozdań Kursdotyczących obsługi wniosków i poczty"
+    users:
+    - login: 1465158_user06
+      first_name: Joanna
+      last_name: Kowalczyk
+    - login: a.piasecka
+      first_name: Agnieszka
+      last_name: Piasecka
+    - login: rpostek
+      first_name: Robert
+      last_name: Postek
+  - role: "Kurs e-learning raporty i sprawozdania z obsługi podmiotów"
+    description: "Kurs z tworzenia raportów i sprawozdań dotyczących obsługi podmiotów"
+    users:
+    - login: 1465158_user06
+      first_name: Joanna
+      last_name: Kowalczyk
+    - login: a.piasecka
+      first_name: Agnieszka
+      last_name: Piasecka
+    - login: rpostek
+      first_name: Robert
+      last_name: Postek
+  - role: "Kurs e-learning raporty administracyjne"
+    description: "Kurs z tworzenia raportów administracyjnych"
+    users:
+    - login: 1465158_user06
+      first_name: Joanna
+      last_name: Kowalczyk
+    - login: a.piasecka
+      first_name: Agnieszka
+      last_name: Piasecka
+    - login: rpostek
+      first_name: Robert
+      last_name: Postek
+  - role: "Pracownik jednostki archiwalnej"
+    description: "Uprawnienie do otrzymywania informacji dla pracowników zarządzających jednostką archiwalną"
+    users:
+    - login: a.piasecka
+      first_name: Agnieszka
+      last_name: Piasecka
+    - login: rpostek
+      first_name: Robert
+      last_name: Postek
+  - role: "Zarządzanie raportami GIODO"
+    description: "Uprawnienie umożliwia zarządzanie raportami z logów GIODO"
+    users:
+    - login: 1465158_user06
+      first_name: Joanna
+      last_name: Kowalczyk
+    - login: a.piasecka
+      first_name: Agnieszka
+      last_name: Piasecka
+  - role: "Administrator Gminny"
+    description: "Uprawnienia tylko do funkcjonalności na poziomie jednostki do której jest przypisany"
+    users:
+    - login: a.piasecka
+      first_name: Agnieszka
+      last_name: Piasecka
+    - login: rpostek
+      first_name: Robert
+      last_name: Postek
+  - role: "Obsługa wniosków i poczty"
+    description: "Pełen zakres obsługi wniosków o przyznanie karty KDR lub wydanie duplikatu karty złożonych lub przesłanych do danego urzędu gminy"
+    users:
+    - login: 1465158_user06
+      first_name: Joanna
+      last_name: Kowalczyk
+    - login: a.piasecka
+      first_name: Agnieszka
+      last_name: Piasecka
+  - role: "Przegląd wniosków"
+    description: "Przegląd wniosków o przyznanie karty KDR lub wydanie duplikatu karty złożonych lub przesłanych do danego urzędu gminy"
+    users:
+    - login: 1465158_user06
+      first_name: Joanna
+      last_name: Kowalczyk
+    - login: a.piasecka
+      first_name: Agnieszka
+      last_name: Piasecka
+    - login: rpostek
+      first_name: Robert
+      last_name: Postek
+  - role: "Zlecenie wykonania raportu / sprawozdania"
+    description: "Uprawnienie umożliwia zlecenie nowego raportu lub sprawozdania"
+    users:
+    - login: 1465158_user06
+      first_name: Joanna
+      last_name: Kowalczyk
+    - login: a.piasecka
+      first_name: Agnieszka
+      last_name: Piasecka
+    - login: rpostek
+      first_name: Robert
+      last_name: Postek
+  - role: "Zapisanie wyniku raportu / sprawozdania"
+    description: "Uprawnienie umożliwia zapisanie wyników wykonanego raportu lub sprawozdania"
+    users:
+    - login: 1465158_user06
+      first_name: Joanna
+      last_name: Kowalczyk
+    - login: a.piasecka
+      first_name: Agnieszka
+      last_name: Piasecka
+    - login: rpostek
+      first_name: Robert
+      last_name: Postek
+  - role: "Podpisanie wyniku raportu / sprawozdania"
+    description: "Uprawnienie umożliwia podpisanie podpisem elektronicznym wyników wykonanego raportu lub sprawozdania"
+    users:
+    - login: 1465158_user06
+      first_name: Joanna
+      last_name: Kowalczyk
+    - login: a.piasecka
+      first_name: Agnieszka
+      last_name: Piasecka
+  - role: "Usunięcie zapisanego raportu"
+    description: "Uprawnienie umożliwia usunięcie wyników zatwierdzonego raportu"
+    users:
+    - login: 1465158_user06
+      first_name: Joanna
+      last_name: Kowalczyk
+    - login: a.piasecka
+      first_name: Agnieszka
+      last_name: Piasecka

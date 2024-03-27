@@ -1,0 +1,38 @@
+{% extends 'syspriv/base.html' %}
+
+{% block title %}
+    Wniosek {{ object.person_first_name}} {{ object.person_last_name}}
+{% endblock %}
+
+{% block content %}
+    <p class="h1">wniosek numer {{ object.display_id|stringformat:"05d" }}</p>
+    <p style="font-size: 150%;">dla {{ object.person_first_name}} {{ object.person_last_name}}<br>
+zlecony przez {{ object.manager_first_name}} {{ object.manager_last_name}}<br>
+dnia {{object.request_time|date:"Y-m-d H:i"}}</p>
+<table style="border: 1px solid black;">
+<tr style="text-align:center;"><th>system</th><th>uprawnienie</th><th>status</th></tr>
+    {% for d in object.commission_role_set.all %}
+    {% cycle '100%' '95%' as brightness silent %}
+    <tr style="border: 1px solid black; background-color: white; filter: brightness({{ brightness }});">
+    {% if d.status == "-" %}
+        <td style="text-decoration: line-through; padding-right: 5px; padding-left: 5px;">{{ d.system_name }}</td>
+        <td style="text-decoration: line-through; padding-right: 5px; padding-left: 5px;">{{ d.role_name }}</td>
+        <td style="background-color: #FFF0F0; padding-right: 5px; padding-left: 5px;">zabrane</td>
+     {% elif d.status == "+" %}
+        <td style="font-weight: bold; padding-right: 5px; padding-left: 5px;">{{ d.system_name }}</td>
+        <td style="font-weight: bold; padding-right: 5px; padding-left: 5px;">{{ d.role_name }}</td>
+        <td style="background-color: #F0FFF0; padding-right: 5px; padding-left: 5px;">dodane</td>
+    {% else %}
+        <td style="padding-right: 5px; padding-left: 5px;">{{ d.system_name }}</td>
+        <td style="padding-right: 5px; padding-left: 5px;">{{ d.role_name }}</td>
+        <td style="padding-right: 5px; padding-left: 5px;">b.z.</td>
+    {% endif %}
+    </tr>
+    {% endfor %}
+</table>
+<div style="padding: 10px;">
+    <a type="button" class="btn btn-primary" href="{% url 'commission-list' %}">powrót do listy</a>
+</div>
+
+{% endblock %}
+

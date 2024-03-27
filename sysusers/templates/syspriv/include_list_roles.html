@@ -1,0 +1,22 @@
+<table class="table table-sm">
+  <thead>
+    <tr style="text-align:center;">
+      <th>system</th><th>rola</th><th>opis</th><th>ID roli</th>
+    </tr>
+  </thead>
+  {% for d in systems %}
+  {% for role in d.roles %}
+  <tr>
+    {% if forloop.first %}
+      <td rowspan="{{ d.roles|length }}" style="text-align:center; border: 1px solid;background-color:{% cycle 'antiquewhite' 'white' %};">
+        <b><a href="{% url 'system-detail' id=d.system.id %}" style="text-decoration: none;color:navy;">{{d.system.display_name}}</a></b><br>({{d.system.server_name}})<br><i>{{d.user.0.login}}</i>
+      </td>
+    {% endif %}
+    <td style="background-color:{% cycle 'antiquewhite' 'white' %};">{{role.name}}</td>
+    <td style="background-color:{% cycle 'antiquewhite' 'white' %};">{{role.description}}</td>
+    <td style="text-align:right;background-color:{% cycle 'antiquewhite' 'white' %};">{{role.internal_id}}</td>
+    {% endfor %}
+  </tr>
+{% endfor %}
+</table>
+

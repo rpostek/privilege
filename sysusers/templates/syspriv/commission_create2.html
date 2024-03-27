@@ -1,0 +1,57 @@
+{% extends 'syspriv/base.html' %}
+{% load syspriv_extras %}
+{% block title %}
+Zmiana uprawnień
+{% endblock %}
+
+
+{% block content %}
+{% for alert in alerts %}
+<div class="alert alert-{{alert.type}}" role="alert">
+  {{alert.text|safe}}
+</div>
+{% endfor %}
+<p>Krok {{ wizard.steps.step1 }} z {{ wizard.steps.count }}</p>
+<h1>{{ person.full_name }}</h1>
+{% if roles_add|length > 0 %}
+<table style="width:100%; border: 1px solid black;">
+<tr><td colspan="3" style="border: 1px solid black;padding-left: 5px; background-color: lightgrey;"><b>uprawnienia dodane</b></td></tr>
+  {% for role in roles_add %}
+  {% cycle '100%' '95%' as brightness silent %}
+  <tr style="background-color: #F0FFF0; filter: brightness({{ brightness }});">
+    <td style="padding-left: 5px;">{{role.system}}</td>
+    <td>{{role.name}}</td>
+    <td>{{role.description}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+{% if roles_remove|length > 0 %}
+<br>
+<table style="width:100%; border: 1px solid black;">
+<tr><td colspan="3" style="border: 1px solid black;padding-left: 5px; background-color: lightgrey;"><b>uprawnienia usunięte</b></td></tr>
+  {% for role in roles_remove %}
+  {% cycle '100%' '95%' as brightness silent %}
+  <tr style="background-color: #FFF0F0; filter: brightness({{ brightness }});">
+    <td style="padding-left: 5px;">{{role.system}}</td>
+    <td>{{role.name}}</td>
+    <td>{{role.description}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+<br>
+<form action="" method="post">
+  {% csrf_token %}
+  {{ wizard.management_form }}
+  {{ wizard.form }}
+     <div style="padding: 10px;">
+
+  {% if wizard.steps.prev %}
+  <button name="wizard_goto_step" type="submit" class="btn btn-secondary" value="{{ wizard.steps.first }}">&lt;&lt;</button>
+  <button name="wizard_goto_step" type="submit" class="btn btn-secondary"  value="{{ wizard.steps.prev }}">&lt;</button>
+  {% endif %}
+  <input type="submit" class="btn btn-primary"  value="OK"/>
+     </div>
+</form>
+{% endblock %}

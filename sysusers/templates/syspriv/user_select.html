@@ -1,0 +1,17 @@
+{% extends 'syspriv/base.html' %}
+{% block title %}
+Select user
+{% endblock %}
+
+{% block content %}
+<form action="." method="post" class="no-print">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+
+{% if selected_user %}
+<h1>{{selected_user.first_name}} {{selected_user.last_name}}</br>uprawnienia w systemach</h1>
+{% include 'syspriv/include_list_roles.html' %}
+{% endif %}
+{% endblock %}

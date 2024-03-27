@@ -1,0 +1,16 @@
+{% extends 'syspriv/base.html' %}
+{% block title %}
+System - lista użytkowników
+{% endblock %}
+
+{% block content %}
+    <form action="." method="post" class="no-print">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+    {% if system %}
+        <h1>Lista użytkowników w systemie {{ selected_system }}</h1>
+        {% include 'syspriv/include_users_in_systems_2.html' %}
+    {% endif %}
+{% endblock %}

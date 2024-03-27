@@ -1,0 +1,14 @@
+{% extends 'syspriv/base.html' %}
+{% block title %}
+Zmieniono uprawnienia użytkownika
+{% endblock %}
+
+{% block content %}
+{% for alert in alerts %}
+<div class="alert alert-{{alert.type}}" role="alert">
+  {{alert.text|safe}}
+</div>
+{% endfor %}
+
+
+{% endblock %}
