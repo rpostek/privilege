@@ -11,6 +11,7 @@ psycopg2 = "*"
 pyyaml = "*"
 django-formtools = "*"
 django-filter = "*"
+pywin32 = "*"
 
 [dev-packages]
 

@@ -158,3 +158,20 @@ class AdContainer(models.Model):
     # tabela przechowująca stringi z OU do zapytań w AD o użytkowników z wybranych wydziałów
     name = models.CharField(max_length=100)
     string = models.TextField(max_length=500)
+
+class AdUser(models.Model):
+    ROLE = [
+        ('M', 'master'),
+        ('S', 'standard'),
+    ]
+    login = models.CharField(max_length=30) #SamAccountName
+    first_name = models.CharField(max_length=30) #GivenName
+    last_name = models.CharField(max_length=40) #Surname
+    status = models.CharField(default='S', choices=ROLE, max_length=2)
+
+class Config(models.Model):
+    key = models.CharField(max_length=30)
+    value = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.key + ': ' + self.value

@@ -3,7 +3,7 @@ from django.contrib import admin
 # Register your models here.
 from django.contrib import admin
 
-from .models import System, Account, Role, AdContainer, Department
+from .models import System, Account, Role, AdContainer, Department, AdUser, Config
 from .forms import SystemPasswordForm
 class SystemAdmin(admin.ModelAdmin):
     form = SystemPasswordForm
@@ -25,3 +25,5 @@ admin.site.register(Account, UserAdmin)
 
 admin.site.register(AdContainer)
 admin.site.register(Department)
+admin.site.register(AdUser)
+admin.site.register(Config)

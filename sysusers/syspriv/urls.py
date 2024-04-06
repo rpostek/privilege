@@ -26,8 +26,10 @@ urlpatterns = [
     path('commission/<int:pk>/', views.CommissionDetailView.as_view(), name='commission-detail'),
     path('test/', views.test_page, name='test-page'),
     path('login/', views.MyLoginView.as_view(),name='login'),
+    #path('login/', views.login_redirect,name='login'),
     path('logout/', LogoutView.as_view(next_page='login'),name='logout'),
-    path('summary/', views.SummaryView.as_view(), name='summary')
+    path('summary/', views.SummaryView.as_view(), name='summary'),
+    #    path('l/', views.reset, name='reset'),
 
 ]
 

@@ -18,8 +18,10 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.contrib import messages
-
-
+from .auth.auth import get_logged_ad_user, DomainBackend
+from django.contrib.sessions.models import Session
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 
 class NotAllowed(Exception):
     pass
@@ -27,9 +29,13 @@ class NotAllowed(Exception):
 
 class HomeView(View):
     def get(self, request):
+        print('home page')
         data = {}
         try:
-            ad_logged_user = models.AdPerson.objects.get(login__iexact=request.user.username)
+            username = get_logged_ad_user(request)
+            #ad_logged_user = models.AdPerson.objects.get(login__iexact=request.user.username)
+            ad_logged_user = models.AdPerson.objects.get(login__iexact=username)
+            data.update({'ad_user_raw': str(username)})
             data.update({'ad_user': ad_logged_user})
             data.update({'systems_allowed': models.Department.objects.get(name=ad_logged_user.department).systems.all()})
         except ObjectDoesNotExist:
@@ -226,7 +232,7 @@ def update_ad_person():
         if not models.Department.objects.filter(name__exact=department_name['department'], office__exact=department_name['office']).exists():
             d = models.Department(name=department_name['department'], office=department_name['office'])
             d.save()
-@method_decorator(login_required, name='dispatch')
+#@method_decorator(login_required, name='dispatch')
 class CommissionCreateView(SessionWizardView):
     TEMPLATES = {'0': 'syspriv/commission_create0.html', '1': 'syspriv/commission_create1.html','2': 'syspriv/commission_create2.html'}
     form_list = [CommissionCreateForm1, CommissionCreateForm2, CommissionCreateForm3]
@@ -338,6 +344,7 @@ class CommissionFilter(django_filters.FilterSet):
     class Meta:
         model = models.Commission
         fields = ['person_first_name','person_last_name']
+
 @method_decorator(login_required, name='dispatch')
 class CommissionListView(ListView):
     model = models.Commission
@@ -367,6 +374,7 @@ class CommissionDetailView(DetailView):
         return q.order_by('-display_id')
 
 
+
 class MyLoginView(LoginView):
     redirect_authenticated_user = True
     template_name = 'syspriv/login.html'
@@ -378,6 +386,16 @@ class MyLoginView(LoginView):
         messages.error(self.request, 'Invalid username or password')
         return self.render_to_response(self.get_context_data(form=form))
 
+def login_redirect(request):
+    username = get_logged_ad_user(request)
+    if username:
+        login(request, User.objects.get(username=username))
+    return redirect('/syspriv/')
+
+'''def reset(request):
+    Session.objects.all().delete()
+    return render(request, "syspriv/list_roles2.html", {})
+'''
 '''class RolesListView(View):
     def get(self, request):
         data = models.System.objects.all().prefetch_related('role_set').order_by('display_name')
