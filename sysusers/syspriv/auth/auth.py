@@ -3,6 +3,7 @@ import win32security
 from django.contrib.auth.backends import BaseBackend
 from django.contrib.auth.models import User
 from django.contrib.auth import login
+from django.contrib.auth import get_user
 
 
 def get_logged_ad_user(request):
@@ -25,6 +26,7 @@ def get_logged_ad_user(request):
     except:
         return None
 
+'''
 class DomainBackend(BaseBackend):
     def authenticate(self, request, username=None, password=None):
         username = get_logged_ad_user(request)
@@ -46,3 +48,28 @@ class DomainBackend(BaseBackend):
             return User.objects.get(pk=user_id)
         except User.DoesNotExist:
             return None
+'''
+
+class WindowsAuthenticationMiddleware():
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        # Code to be executed for each request before
+        # the view (and later middleware) are called.
+        request.user = get_user(request)
+        if not request.user.is_authenticated:
+            #request.user = User.objects.get(id=12)
+            ad_username = get_logged_ad_user(request)
+            try:
+                request.user = User.objects.get(username=ad_username)
+            except User.DoesNotExist:
+                # Create a new user
+                user = User(username=ad_username)
+                user.save()
+                login(request, user)
+        response = self.get_response(request)
+
+        # Code to be executed for each request/response after
+        # the view is called.
+        return response

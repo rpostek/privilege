@@ -18,8 +18,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.contrib import messages
-from .auth.auth import get_logged_ad_user, DomainBackend
-from django.contrib.sessions.models import Session
+from .auth.auth import get_logged_ad_user #, DomainBackend
+#from django.contrib.sessions.models import Session
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 

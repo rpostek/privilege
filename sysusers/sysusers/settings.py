@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--&+dt+act6)+1%)xk-xl6f$4ks-=*akusm8te#sk7lref$fh2@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '10.128.2.1', '14aw-05945.bzmw.gov.pl']
 
@@ -47,6 +47,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'syspriv.auth.auth.WindowsAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -109,8 +110,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTHENTICATION_BACKENDS = [
-    'syspriv.auth.auth.DomainBackend',
-    #'django.contrib.auth.backends.ModelBackend'
+    #'syspriv.auth.auth.DomainBackend',
+    'django.contrib.auth.backends.ModelBackend'
 ]
 
 # Internationalization
