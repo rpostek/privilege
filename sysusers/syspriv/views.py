@@ -13,15 +13,14 @@ from django.db.models import Max
 from django_filters.views import FilterView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-#from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.contrib import messages
 from .auth.auth import get_logged_ad_user #, DomainBackend
-#from django.contrib.sessions.models import Session
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+from .mail.mail import send_commision
 
 class NotAllowed(Exception):
     pass
@@ -253,7 +252,9 @@ class CommissionCreateView(SessionWizardView):
             form.fields['person'].choices = ((choice.pk, choice) for choice in sq)
         return form
 
-
+    @staticmethod
+    def send_mail(commision):
+        return send_commision(commision)
 
     def done(self, form_list, **kwargs):
         try:
@@ -289,8 +290,9 @@ class CommissionCreateView(SessionWizardView):
             com_role.status = '-'
             com_role.commission = commission
             com_role.save()
-
-        alerts = [{'type': 'primary', 'text': 'wniosek o zmianę uprawnień został utworzony'},]
+        mail_alert = CommissionCreateView.send_mail(commission.commision_html())
+        alerts = [{'type': 'primary', 'text': f'wniosek nr <b>{commission.display_id:05}</b> o zmianę uprawnień został utworzony'},]
+        alerts.append(mail_alert)
         return render(self.request, 'syspriv/done.html', {'form_data': [form.cleaned_data for form in form_list], 'alerts': alerts})
 
     def get_form_initial(self, step):
@@ -391,6 +393,8 @@ def login_redirect(request):
     if username:
         login(request, User.objects.get(username=username))
     return redirect('/syspriv/')
+
+
 
 '''def reset(request):
     Session.objects.all().delete()

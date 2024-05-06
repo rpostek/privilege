@@ -2,6 +2,7 @@ import logging
 from django.db import models
 from django.utils import timezone
 from django.core.exceptions import ObjectDoesNotExist
+from django.template import Context, Template
 
 
 class System(models.Model):
@@ -137,6 +138,40 @@ class Commission(models.Model):
     class Meta:
         ordering = ["display_id",]
 
+    def commision_html(self):
+        t = Template('''
+    <html>
+      <head></head>
+      <body>
+      Proszę o akceptację wniosku numer {{ object.display_id|stringformat:"05d" }} o zmianę uprawnień dla <b>{{ object.person_first_name}} {{ object.person_last_name}}</b>.<br>
+    Wnioskujący: {{object.manager_first_name}} {{object.manager_last_name}}<br> 
+    Data utworzenia wniosku: {{object.request_time|date:"Y-m-d H:i"}}<br>
+<table style="border: 1px solid black;">
+<tr style="text-align:center;"><th>system</th><th>uprawnienie</th><th>status</th></tr>
+    {% for d in object.commission_role_set.all %}
+    {% cycle '100%' '95%' as brightness silent %}
+    <tr style="border: 1px solid black; background-color: white; filter: brightness({{ brightness }});">
+    {% if d.status == "-" %}
+        <td style="text-decoration: line-through; padding-right: 5px; padding-left: 5px;">{{ d.system_name }}</td>
+        <td style="text-decoration: line-through; padding-right: 5px; padding-left: 5px;">{{ d.role_name }}</td>
+        <td style="background-color: #FFF0F0; padding-right: 5px; padding-left: 5px;">zabrane</td>
+     {% elif d.status == "+" %}
+        <td style="font-weight: bold; padding-right: 5px; padding-left: 5px;">{{ d.system_name }}</td>
+        <td style="font-weight: bold; padding-right: 5px; padding-left: 5px;">{{ d.role_name }}</td>
+        <td style="background-color: #F0FFF0; padding-right: 5px; padding-left: 5px;">dodane</td>
+    {% else %}
+        <td style="padding-right: 5px; padding-left: 5px;">{{ d.system_name }}</td>
+        <td style="padding-right: 5px; padding-left: 5px;">{{ d.role_name }}</td>
+        <td style="padding-right: 5px; padding-left: 5px;">b.z.</td>
+    {% endif %}
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
+''')
+        c = Context({"object": self})
+        return t.render(c)
 
 class Commission_role(models.Model):
     ROLE_STATUS = [

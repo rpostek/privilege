@@ -138,4 +138,4 @@ STATIC_ROOT = BASE_DIR / "static"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/syspriv/login/'
-LOGOUT_REDIRECT_URL = '/syspriv/'
+LOGOUT_REDIRECT_URL = '/syspriv/logout/'

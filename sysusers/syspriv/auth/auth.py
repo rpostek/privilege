@@ -4,7 +4,8 @@ from django.contrib.auth.backends import BaseBackend
 from django.contrib.auth.models import User
 from django.contrib.auth import login
 from django.contrib.auth import get_user
-
+from .. import models
+from django.core.exceptions import ObjectDoesNotExist
 
 def get_logged_ad_user(request):
     try:
@@ -17,7 +18,11 @@ def get_logged_ad_user(request):
             #user = win32api.GetUserName()
             win32security.RevertToSelf() # undo impersonation
             win32api.CloseHandle(handle) # don't leak resources, need to close the handle!
-            if domain.lower() == 'bzmw':
+            try:
+                config_domain = models.Config.objects.get(key='domain').value.lower()
+            except ObjectDoesNotExist:
+                config_domain = None
+            if domain.lower() == config_domain:
                 return username
             else:
                 return None
@@ -55,21 +60,16 @@ class WindowsAuthenticationMiddleware():
         self.get_response = get_response
 
     def __call__(self, request):
-        # Code to be executed for each request before
-        # the view (and later middleware) are called.
         request.user = get_user(request)
         if not request.user.is_authenticated:
-            #request.user = User.objects.get(id=12)
             ad_username = get_logged_ad_user(request)
-            try:
-                request.user = User.objects.get(username=ad_username)
-            except User.DoesNotExist:
-                # Create a new user
-                user = User(username=ad_username)
-                user.save()
-                login(request, user)
+            if ad_username:
+                try:
+                    request.user = User.objects.get(username=ad_username)
+                except User.DoesNotExist:
+                    # Create a new user
+                    user = User(username=ad_username)
+                    user.save()
+                    login(request, user)
         response = self.get_response(request)
-
-        # Code to be executed for each request/response after
-        # the view is called.
         return response
