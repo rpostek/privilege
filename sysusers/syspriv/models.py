@@ -83,7 +83,7 @@ class AdPerson(models.Model):
     def people_from_department(cls, user):
         try:
             user_ad = cls.logged_aduser(user)
-            return cls.objects.filter(department=user_ad.department, office=user_ad.office)
+            return cls.objects.filter(department=user_ad.department if user_ad else None, office=user_ad.office if user_ad else None)
         except ObjectDoesNotExist:
             return None
 
