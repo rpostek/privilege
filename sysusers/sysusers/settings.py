@@ -85,7 +85,7 @@ DATABASES = {
         'NAME': 'syspriv',
         'USER': 'postgres',
         'PASSWORD': 'super!SecureDatabase3',
-        'HOST': '10.128.4.170',
+        'HOST': '10.128.0.17',
         'PORT': '15432',
     }
 }

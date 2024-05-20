@@ -94,6 +94,7 @@ class AdPerson(models.Model):
         else:
             return cls.people_from_department(user)
 
+
     class Meta:
         ordering = ["last_name", "first_name"]
 

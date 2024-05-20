@@ -56,12 +56,6 @@ roles:
   - login: mblaszczak@um.warszawa.pl
     first_name: Marta
     last_name: Błaszczak
-  - login: Kwasiak@um.warszawa.pl
-    first_name: Katarzyna
-    last_name: Wasiak
-  - login: k.wasiak@um.warszawa.pl
-    first_name: Katarzyna
-    last_name: Wasiak
   - login: AKowalczyk@um.warszawa.pl
     first_name: Agnieszka
     last_name: Kowalczyk

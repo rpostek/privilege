@@ -21,6 +21,7 @@ from .auth.auth import get_logged_ad_user #, DomainBackend
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from .mail.mail import send_commision
+from django.db.models import F, Value, Func
 
 class NotAllowed(Exception):
     pass
@@ -28,7 +29,6 @@ class NotAllowed(Exception):
 
 class HomeView(View):
     def get(self, request):
-        print('home page')
         data = {}
         try:
             username = get_logged_ad_user(request)
@@ -151,10 +151,17 @@ class DeaprtmentListView(View):
         query = []
         try:
             if request.user.groups.filter(name='master').exists():
-                query = models.Department.objects.all()
+                non_empty_departments = tuple(models.Account.objects.annotate(
+                    full_name=Func(F('adperson__office'), Value(':'), F('adperson__department'), function='CONCAT')) \
+                                              .order_by('full_name').values_list('full_name',
+                                                                                 flat=True).distinct().all())
+                query = models.Department.objects.annotate(
+                    full_name=Func(F('office'), Value(':'), F('name'), function='CONCAT')).filter(full_name__in=non_empty_departments)
             else:
                 ad_logged_user = models.AdPerson.objects.get(login__iexact=request.user.username)
                 query = models.Department.objects.filter(name=ad_logged_user.department, office=ad_logged_user.office)
+
+
         except ObjectDoesNotExist:
             pass
         return render(self.request, 'syspriv/department_list.html', {'departments': query})
