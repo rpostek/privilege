@@ -23,7 +23,10 @@ Pracownik {{ selected_user.full_name }} - lista uprawnień
             <tr>
                 {% if forloop.first %}
                 <td rowspan="{{ d.roles|length }}" style="text-align:center; border: 1px solid;background-color:{% cycle 'antiquewhite' 'white' %};">
-                    <b><a href="{% url 'system-detail' id=d.system.id %}">{{ d.system.display_name }}</a></b><br> <inline style="font-size:70%;">({{ d.system.description }})</inline>
+                    <b><a href="{% url 'system-detail' id=d.system.id %}">{{ d.system.display_name }}</a></b><br>
+                    {% if d.system.description %}
+                        <inline style="font-size:70%;">{{ d.system.description }}</inline>
+                    {% endif %}
                 </td>
             {% endif %}
             <td style="filter: brightness({% cycle '100%' '95%' %});">{{ role.name }}</td>

@@ -55,6 +55,19 @@ where o.STATUS = 'T'
 select r.KOD_OPER user_id, r.ID_WYDZIALU role_id
 from b_wydzial_oper r
 where r.ROK = (select max(rok) from B_WYDZIAL_OPER) and r.rok = (select max(rok) from B_WYDZIAL_OPER)
+
+# Groszek KSZOB
+## role
+select ID_SYSTEMU internal_id, NAZWA name, OPIS description from IS_REJESTR
+## użytkownicy
+select KOD_OPER internal_id, NAZWA login, trim(coalesce(NAZWA_ZEWN, NAZWA)) first_name, '' last_name from OP_OPER
+where STATUS = 'T'
+## użytkownicy-role
+SELECT r.KOD_OPER user_id, r.ID_SYSTEMU role_id
+FROM KZ_OPER2SYSTEM r
+join OP_OPER o on o.KOD_oper = r.KOD_OPER
+where o.STATUS = 'T'
+
 # Papirus SQL
 ## role:
 SELECT GROUPCODE internal_id, GROUPNAME name, '' description

@@ -17,9 +17,6 @@ roles:
   - login: Mwasowska@um.warszawa.pl
     first_name: Martyna
     last_name: Wąsowska
-  - login: kmajewska@um.warszawa.pl
-    first_name: Katarzyna
-    last_name: Kulma
   - login: Ajarzebska@um.warszawa.pl
     first_name: Angelika
     last_name: Jarzębska
@@ -96,5 +93,8 @@ roles:
     first_name: Andrzej
     last_name: Pylak
   - login: Dgajewska@um.warszawa.pl
+    first_name: Dorota
+    last_name: Gajewska
+  - login: DGajewska@um.warszawa.pl
     first_name: Dorota
     last_name: Gajewska
