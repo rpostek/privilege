@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure--&+dt+act6)+1%)xk-xl6f$4ks-=*akusm8te#sk7lref$fh2@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '10.128.2.1', '14aw-05945.bzmw.gov.pl']
+ALLOWED_HOSTS = ['127.0.0.1', '10.128.2.1', '14aw-05945.bzmw.gov.pl', 'uprawnienia-wesola.bzmw.gov.pl']
 
 
 # Application definition

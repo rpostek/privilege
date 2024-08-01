@@ -273,7 +273,8 @@ class CommissionCreateView(SessionWizardView):
         data = self.get_all_cleaned_data()
         commission = models.Commission()
         cm_id_next = models.Commission.objects.aggregate(Max('display_id', default = 0))
-        commission.display_id = cm_id_next['display_id__max'] + 1
+        # cm_id_next['display_id__max'] będzie None w przypaku pustej tabeli np. po truncate
+        commission.display_id = cm_id_next['display_id__max'] + 1 if cm_id_next['display_id__max'] is not None else 1
         commission.manager_first_name = ad_logged_user.first_name
         commission.manager_last_name = ad_logged_user.last_name
         commission.person_first_name = data['person'].first_name

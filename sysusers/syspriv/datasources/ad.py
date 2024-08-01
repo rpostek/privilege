@@ -18,7 +18,7 @@ class AdDatasource():
             ad_containers = models.AdContainer.objects.all()
             models.AdPerson.objects.all().delete()
             for ad_container in ad_containers:
-                ps_script = 'Get-ADUser -Filter * -SearchBase "' + ad_container.string + '" -Properties SamAccountName,Name,GivenName,Surname,Title,Department,Office,Manager,emailaddress \
+                ps_script = 'Get-ADUser -SearchBase "' + ad_container.string + '" -Properties SamAccountName,Name,GivenName,Surname,Title,Department,Office,Manager,emailaddress \
                             | Select-Object -Property SamAccountName,Name,GivenName,Surname,Title,Department,Office,Manager,emailaddress \
                             | convertto-json'
 
