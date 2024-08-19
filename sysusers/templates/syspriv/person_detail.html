@@ -7,7 +7,11 @@ Pracownik {{ selected_user.full_name }} - lista uprawnień
 {% block content %}
 <p class="h1">{{ selected_user.full_name }}</p>
 <p>{{selected_user.office}}<br>
-{{selected_user.department}}</p>
+{{selected_user.department}}<br>
+    {{selected_user.room_number}}<br>
+    {{selected_user.office_phone}}<br>
+    {% if selected_user.mobile_phone %} {{selected_user.mobile_phone}}<br> {% endif %}
+</p>
 {% if systems %}
 <table class="table table-sm">
     <thead>

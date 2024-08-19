@@ -68,6 +68,9 @@ class AdPerson(models.Model):
     office = models.CharField(max_length=80, null=False, default='b.d.') #Office (biuro/dzielnica)
     manager = models.CharField(max_length=100, default='b.d.') #Manager
     emailaddress = models.CharField(max_length=50, default='b.d.') #emailaddress
+    office_phone = models.CharField(max_length=20, null=True, blank=True) #OfficePhone
+    mobile_phone = models.CharField(max_length=20, null=True, blank=True) #MobilePhone
+    room_number = models.CharField(max_length=80, null=True, blank=True) #POBox
 
     def __str__(self):
         return self.full_name

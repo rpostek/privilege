@@ -1,0 +1,41 @@
+{% extends 'staff/base.html' %}
+
+{% block title %}
+Struktura Urzędu
+{% endblock %}
+
+{% block content %}
+<div class="row">
+<div id="using_json_2" class="col-sm">
+</div>
+<div id="person_detail" class="col-sm">
+</div>
+</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+  <script>
+  $(function () {
+    // 6 create an instance when the DOM is ready
+    //$('#jstree').jstree();
+    $.jstree.defaults.core.data
+    $('#using_json_2').jstree({ 'core' : {
+      "themes" : {
+        "variant" : "large",
+        "icons" : false
+      },
+      'data' : [
+                             {% for p in data %}
+          {"id": "{{p.id}}", "parent": "{{p.parent}}", "text": "{{p.text}}", "a_attr": {"href": "{% url 'person-detail-staff-table' p.pk %}"} },
+          {% endfor %}
+          ]
+  }
+   }).on("select_node.jstree", function (e, data) {
+           $("#person_detail").load(data.instance.get_node(data.node, true).children('a').attr('href'));
+    });
+
+  });
+
+
+  </script>
+
+{% endblock %}

@@ -32,5 +32,3 @@ urlpatterns = [
     #    path('l/', views.reset, name='reset'),
 
 ]
-
-a=FilterView()
