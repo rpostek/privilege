@@ -22,7 +22,7 @@ Pracownicy
 </tr>
 
 <tr>
-    <td><a href="{% url 'person-detail-staff' person.id %}" class="link-offset-2 link-underline link-underline-opacity-25">{{person.first_name}} {{person.last_name}}</a></td>
+    <td><a href="{% url 'person-tree' person.id %}" class="link-offset-2 link-underline link-underline-opacity-25">{{person.first_name}} {{person.last_name}}</a></td>
     <td><a href={% url 'title-staff' person.title %} class="link-offset-2 link-underline link-underline-opacity-25">{{person.title}}</a></td>
     <td style="max-width:12ch;text-align:center;">{% if person.room_number %}<a href={% url 'room-staff' person.room_number %} class="link-offset-2 link-underline link-underline-opacity-25">{{person.room_number}}</a>{% endif%}</td>
     <td>{% if person.office_phone|length > 5 %}{{person.office_phone|slice:"-5:"}}{% endif%}<a href="xmpp://{{person.emailaddress}}" class="link-underline-light">💬</a> <a href="mailto:{{person.emailaddress}}" class="link-underline-light">✉</a></td>

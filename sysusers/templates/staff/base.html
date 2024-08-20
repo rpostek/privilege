@@ -38,8 +38,8 @@
 </head>
 <body>
 <div style="padding:30px;">
-    <span  style="padding:5px;"><a href={% url 'staff' %} class="btn btn-outline-primary">Home</span></a>
-    <span  style="padding:5px;"><a href={% url 'tree' %} class="btn btn-outline-primary">Struktura</span></a>
+    <span  style="padding:5px;"><a href={% url 'staff' %} class="btn btn-outline-primary">Lista</span></a>
+    <span  style="padding:5px;"><a href={% url 'person-tree' 0 %} class="btn btn-outline-primary">Struktura</span></a>
 </div>
 <div class="container">
     {% block content %}

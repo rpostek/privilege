@@ -20,7 +20,7 @@
         </tr>
     {% if person.office_phone|length > 5 %}
         <tr>
-            <td class="names">tefefon</td>
+            <td class="names">telefon</td>
             <td>{{person.office_phone|slice:"-5:"}}<a href="xmpp://{{person.emailaddress}}" class="link-underline-light">💬</a></td>
         </tr>
     {% endif%}
@@ -33,7 +33,7 @@
      {% if manager %}
         <tr>
             <td class="names">przełożony</td>
-            <td><a href="{% url 'person-detail-staff' manager.id %}" class="link-offset-2 link-underline link-underline-opacity-25">{{manager.first_name}} {{manager.last_name}}</a></td>
+            <td><a class="tt link-offset-2 link-underline link-underline-opacity-25" label="{{manager.full_name}}">{{manager.first_name}} {{manager.last_name}}</a></td>
         </tr>
     {% endif %}
     {% if staff %}
@@ -42,10 +42,20 @@
         <td>
             <ul>
                 {% for s in staff %}
-                    <li><a href="{% url 'person-detail-staff' s.id %}" class="link-offset-2 link-underline link-underline-opacity-25">{{s.first_name}} {{s.last_name}}</a></li>
+                    <li><a class="tt link-offset-2 link-underline link-underline-opacity-25" label="{{s.full_name}}">{{s.first_name}} {{s.last_name}}</a></li>
                 {% endfor %}
             </ul>
         </td>
     </tr>
     {% endif %}
 </table>
+
+<script>
+
+    $(".tt").click(function(){
+      $("#tree").jstree().deselect_all(true);
+      //$("#tree").jstree("close_all");
+      $('#tree').jstree('select_node', $(this).attr("label"));
+    });
+
+</script>

@@ -6,7 +6,7 @@ Struktura Urzędu
 
 {% block content %}
 <div class="row">
-<div id="using_json_2" class="col-sm">
+<div id="tree" class="col-sm-4">
 </div>
 <div id="person_detail" class="col-sm">
 </div>
@@ -15,23 +15,27 @@ Struktura Urzędu
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
   <script>
   $(function () {
-    // 6 create an instance when the DOM is ready
-    //$('#jstree').jstree();
-    $.jstree.defaults.core.data
-    $('#using_json_2').jstree({ 'core' : {
+    $('#tree').jstree({ 'core' : {
       "themes" : {
         "variant" : "large",
         "icons" : false
       },
+      'multiple' : false,
       'data' : [
                              {% for p in data %}
           {"id": "{{p.id}}", "parent": "{{p.parent}}", "text": "{{p.text}}", "a_attr": {"href": "{% url 'person-detail-staff-table' p.pk %}"} },
           {% endfor %}
           ]
   }
-   }).on("select_node.jstree", function (e, data) {
+   }).on("select_node.jstree", (e, data) => {
            $("#person_detail").load(data.instance.get_node(data.node, true).children('a').attr('href'));
     });
+
+    $('#tree').on('ready.jstree', function () {
+        $('#tree').jstree('select_node', '{{selected.0.full_name}}');
+    });
+
+
 
   });
 
