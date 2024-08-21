@@ -18,8 +18,8 @@ class AdDatasource():
             ad_containers = models.AdContainer.objects.all()
             models.AdPerson.objects.all().delete()
             for ad_container in ad_containers:
-                ps_script = 'Get-ADUser -Filter * -SearchBase "' + ad_container.string + '" -Properties SamAccountName,Name,GivenName,Surname,Title,Department,Office,Manager,emailaddress,OfficePhone,MobilePhone,POBox \
-                            | Select-Object -Property SamAccountName,Name,GivenName,Surname,Title,Department,Office,Manager,emailaddress,OfficePhone,MobilePhone,POBox \
+                ps_script = 'Get-ADUser -Filter * -SearchBase "' + ad_container.string + '" -Properties SamAccountName,Name,GivenName,Surname,Title,Department,Office,Manager,emailaddress,OfficePhone,MobilePhone,POBox,ThumbnailPhoto \
+                            | Select-Object -Property SamAccountName,Name,GivenName,Surname,Title,Department,Office,Manager,emailaddress,OfficePhone,MobilePhone,POBox, @{label="Thumb"; expression = {[Convert]::ToBase64String($_.ThumbnailPhoto)}} \
                             | convertto-json'
                 ps = subprocess.Popen(["powershell", "-Command", ps_script],
                                       stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
@@ -46,7 +46,8 @@ class AdDatasource():
                                                      emailaddress=row['emailaddress'],
                                                      office_phone=row['OfficePhone'] if row['OfficePhone'] else None,
                                                      mobile_phone=row['MobilePhone'] if row['MobilePhone'] else None,
-                                                     room_number=str(row['POBox']) if row['POBox'] else None)
+                                                     room_number=str(row['POBox']) if row['POBox'] else None,
+                                                     thumbnail=row['Thumb'] if row['Thumb'] else None)
                             person.save()
             views.update_ad_person()
             alerts=[{'type':'primary', 'text':'lista pracowników pomyślnie pobrana z AD'}]

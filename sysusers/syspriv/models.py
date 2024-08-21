@@ -71,6 +71,7 @@ class AdPerson(models.Model):
     office_phone = models.CharField(max_length=20, null=True, blank=True) #OfficePhone
     mobile_phone = models.CharField(max_length=20, null=True, blank=True) #MobilePhone
     room_number = models.CharField(max_length=80, null=True, blank=True) #POBox
+    thumbnail = models.TextField(null=True) #thumb base64
 
     def __str__(self):
         return self.full_name
