@@ -6,7 +6,10 @@ Struktura Urzędu
 
 {% block content %}
 <div class="row">
-<div id="tree" class="col-sm-4">
+  <div class="col-sm-4">
+  <input type="text" id="tree_q" value="" class="input" style="margin:0em auto 1em 2em; display:block; padding:4px; border-radius:4px; border:1px solid silver;" />
+    <div id="tree">
+    </div>
 </div>
 <div id="person_detail" class="col-sm">
 </div>
@@ -15,7 +18,9 @@ Struktura Urzędu
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
   <script>
   $(function () {
-    $('#tree').jstree({ 'core' : {
+    $('#tree').jstree({
+    "plugins" : [ "search" ],
+    'core' : {
       "themes" : {
         "variant" : "large",
         "icons" : false
@@ -35,6 +40,15 @@ Struktura Urzędu
         $('#tree').jstree('select_node', '{{selected.0.full_name}}');
     });
 
+
+var to = false;
+  $('#tree_q').keyup(function () {
+    if(to) { clearTimeout(to); }
+    to = setTimeout(function () {
+      var v = $('#tree_q').val();
+      $('#tree').jstree(true).search(v);
+    }, 250);
+  });
 
 
   });
