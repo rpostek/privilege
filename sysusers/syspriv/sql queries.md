@@ -271,6 +271,43 @@ foreach($group in $qmatic_groups){ $group_users = Get-ADGroupMember -Identity $g
     } 
 } $roles | select-object -Unique -Property * | convertto-json
 
+
+#PIUW
+## użytkownicy:
+convertto-json @(Get-ADGroup -Filter * -SearchBase "CN=piuw_wesola_rednacz,OU=PIUW,OU=.SecurityGroups,OU=.Konta Specjalne,OU=Urzad Miasta Warszawy,DC=bzmw,DC=gov,DC=pl" -Property SamAccountName,Name,Description | Select-Object -Property SamAccountName,Name,Description)
+
+## role:
+$users = @()
+foreach($group in Get-ADGroup -Filter * -SearchBase "CN=piuw_wesola_rednacz,OU=PIUW,OU=.SecurityGroups,OU=.Konta Specjalne,OU=Urzad Miasta Warszawy,DC=bzmw,DC=gov,DC=pl"){
+    $users += Get-ADGroupMember -Identity $group.samaccountname -Recursive | Where-Object {$_.objectClass -eq "user"}
+}
+$data = @()
+foreach($us in $users){
+    $user = Get-ADUser -Identity $us.samaccountname -Properties samaccountname,GivenName,Surname
+    if ($user.DistinguishedName -Match "OU=Users,OU=Dzielnica,OU=Wesola,OU=Dzielnice,OU=Urzad Miasta Warszawy,DC=bzmw,DC=gov,DC=pl"){
+        $data +=$user
+    }
+}
+$data | select-object -Unique -Property SamAccountName,GivenName,Surname | convertto-json
+
+## użytkownicy-role:
+$users = @()
+foreach($group in Get-ADGroup -Filter * -SearchBase "CN=piuw_wesola_rednacz,OU=PIUW,OU=.SecurityGroups,OU=.Konta Specjalne,OU=Urzad Miasta Warszawy,DC=bzmw,DC=gov,DC=pl"){
+    $users += Get-ADGroupMember -Identity $group.samaccountname -Recursive | Where-Object {$_.objectClass -eq "user"}
+}
+$roles = @()
+foreach($user in $users) {
+    if ($user.DistinguishedName -Match "OU=Users,OU=Dzielnica,OU=Wesola,OU=Dzielnice,OU=Urzad Miasta Warszawy,DC=bzmw,DC=gov,DC=pl"){
+        $p = [PSCustomObject]@{
+            User = $user.samaccountname
+            Role = "piuw_wesola_rednacz"
+            }
+        $roles += $p
+    }
+}
+$roles | select-object -Unique -Property * | convertto-json
+
+
 ----------------------------------------------------------------
 
 Get-ADObject  -Filter * -SearchBase "CN=wesola.edukacjaprzedszkolna,OU=Poczta,OU=Distribution Groups,OU=Dzielnica,OU=Wesola,OU=Dzielnice,OU=Urzad Miasta Warszawy,DC=bzmw,DC=gov,DC=pl" -Properties *

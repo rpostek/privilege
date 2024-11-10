@@ -1,0 +1,254 @@
+roles:
+  - role: Administrator
+    description: 'Uprawnienia'
+    users:
+    - login: m.kisiel
+      first_name: Małgorzata
+      last_name: Kisiel
+    - login: e.bareja
+      first_name: Elżbieta
+      last_name: Bareja
+    - login: admin
+      first_name: Admin
+      last_name: Admin
+    - login: m.lange
+      first_name: Monika
+      last_name: Lange
+    - login: r.postek
+      first_name: Robert
+      last_name: Postek
+  - role: 'Architektura i urbanistyka'
+    description: 'Grupa opłat'
+    users:
+    - login: m.kisiel
+      first_name: Małgorzata
+      last_name: Kisiel
+    - login: e.bareja
+      first_name: Elżbieta
+      last_name: Bareja
+    - login: admin
+      first_name: Admin
+      last_name: Admin
+    - login: m.lange
+      first_name: Monika
+      last_name: Lange
+    - login: r.postek
+      first_name: Robert
+      last_name: Postek
+  - role: 'Formularz wielojęzyczny'
+    description: 'Grupa opłat'
+    users:
+    - login: m.kisiel
+      first_name: Małgorzata
+      last_name: Kisiel
+    - login: e.bareja
+      first_name: Elżbieta
+      last_name: Bareja
+    - login: admin
+      first_name: Admin
+      last_name: Admin
+    - login: m.lange
+      first_name: Monika
+      last_name: Lange
+    - login: r.postek
+      first_name: Robert
+      last_name: Postek
+  - role: 'Geodezja i kataster'
+    description: 'Grupa opłat'
+    users:
+    - login: m.kisiel
+      first_name: Małgorzata
+      last_name: Kisiel
+    - login: e.bareja
+      first_name: Elżbieta
+      last_name: Bareja
+    - login: admin
+      first_name: Admin
+      last_name: Admin
+    - login: m.lange
+      first_name: Monika
+      last_name: Lange
+    - login: r.postek
+      first_name: Robert
+      last_name: Postek
+  - role: 'Karta Dużej Rodziny'
+    description: 'Grupa opłat'
+    users:
+    - login: m.kisiel
+      first_name: Małgorzata
+      last_name: Kisiel
+    - login: e.bareja
+      first_name: Elżbieta
+      last_name: Bareja
+    - login: admin
+      first_name: Admin
+      last_name: Admin
+    - login: m.lange
+      first_name: Monika
+      last_name: Lange
+    - login: r.postek
+      first_name: Robert
+      last_name: Postek
+  - role: 'Kaucje Gwarancje Wadium'
+    description: 'Grupa opłat'
+    users:
+    - login: m.kisiel
+      first_name: Małgorzata
+      last_name: Kisiel
+    - login: e.bareja
+      first_name: Elżbieta
+      last_name: Bareja
+    - login: admin
+      first_name: Admin
+      last_name: Admin
+    - login: m.lange
+      first_name: Monika
+      last_name: Lange
+    - login: r.postek
+      first_name: Robert
+      last_name: Postek
+  - role: 'Ochrona środowiska'
+    description: 'Grupa opłat'
+    users:
+    - login: m.kisiel
+      first_name: Małgorzata
+      last_name: Kisiel
+    - login: e.bareja
+      first_name: Elżbieta
+      last_name: Bareja
+    - login: admin
+      first_name: Admin
+      last_name: Admin
+    - login: m.lange
+      first_name: Monika
+      last_name: Lange
+    - login: r.postek
+      first_name: Robert
+      last_name: Postek
+  - role: 'Odpady komunalne'
+    description: 'Grupa opłat'
+    users:
+    - login: m.kisiel
+      first_name: Małgorzata
+      last_name: Kisiel
+    - login: e.bareja
+      first_name: Elżbieta
+      last_name: Bareja
+    - login: admin
+      first_name: Admin
+      last_name: Admin
+    - login: m.lange
+      first_name: Monika
+      last_name: Lange
+    - login: r.postek
+      first_name: Robert
+      last_name: Postek
+  - role: 'Opłaty na rzecz m.st. Warszawy'
+    description: 'Grupa opłat'
+    users:
+    - login: m.kisiel
+      first_name: Małgorzata
+      last_name: Kisiel
+    - login: e.bareja
+      first_name: Elżbieta
+      last_name: Bareja
+    - login: admin
+      first_name: Admin
+      last_name: Admin
+    - login: m.lange
+      first_name: Monika
+      last_name: Lange
+    - login: r.postek
+      first_name: Robert
+      last_name: Postek
+  - role: 'Opłaty skarbowe'
+    description: 'Grupa opłat'
+    users:
+    - login: m.kisiel
+      first_name: Małgorzata
+      last_name: Kisiel
+    - login: e.bareja
+      first_name: Elżbieta
+      last_name: Bareja
+    - login: admin
+      first_name: Admin
+      last_name: Admin
+    - login: m.lange
+      first_name: Monika
+      last_name: Lange
+    - login: r.postek
+      first_name: Robert
+      last_name: Postek
+  - role: 'Podatki'
+    description: 'Grupa opłat'
+    users:
+    - login: m.kisiel
+      first_name: Małgorzata
+      last_name: Kisiel
+    - login: e.bareja
+      first_name: Elżbieta
+      last_name: Bareja
+    - login: admin
+      first_name: Admin
+      last_name: Admin
+    - login: m.lange
+      first_name: Monika
+      last_name: Lange
+    - login: r.postek
+      first_name: Robert
+      last_name: Postek
+  - role: 'Prawo jazdy'
+    description: 'Grupa opłat'
+    users:
+    - login: m.kisiel
+      first_name: Małgorzata
+      last_name: Kisiel
+    - login: e.bareja
+      first_name: Elżbieta
+      last_name: Bareja
+    - login: admin
+      first_name: Admin
+      last_name: Admin
+    - login: m.lange
+      first_name: Monika
+      last_name: Lange
+    - login: r.postek
+      first_name: Robert
+      last_name: Postek
+  - role: 'Rejestracja i wycofanie z ruchu'
+    description: 'Grupa opłat'
+    users:
+    - login: m.kisiel
+      first_name: Małgorzata
+      last_name: Kisiel
+    - login: e.bareja
+      first_name: Elżbieta
+      last_name: Bareja
+    - login: admin
+      first_name: Admin
+      last_name: Admin
+    - login: m.lange
+      first_name: Monika
+      last_name: Lange
+    - login: r.postek
+      first_name: Robert
+      last_name: Postek
+  - role: 'Udostępnianie danych'
+    description: 'Grupa opłat'
+    users:
+    - login: m.kisiel
+      first_name: Małgorzata
+      last_name: Kisiel
+    - login: e.bareja
+      first_name: Elżbieta
+      last_name: Bareja
+    - login: admin
+      first_name: Admin
+      last_name: Admin
+    - login: m.lange
+      first_name: Monika
+      last_name: Lange
+    - login: r.postek
+      first_name: Robert
+      last_name: Postek
+      

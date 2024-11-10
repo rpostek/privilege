@@ -43,7 +43,7 @@
      {% if manager %}
         <tr>
             <td class="names">przełożony</td>
-            <td><a class="tt link-offset-2 link-underline link-underline-opacity-25" label="{{manager.full_name}}">{{manager.first_name}} {{manager.last_name}}</a></td>
+            <td><a class="tt link-offset-2 link-underline link-underline-opacity-25" label="{{manager.full_name}}" role="button">{{manager.first_name}} {{manager.last_name}}</a></td>
         </tr>
     {% endif %}
     {% if staff %}
@@ -52,7 +52,7 @@
         <td>
             <ul>
                 {% for s in staff %}
-                    <li><a class="tt link-offset-2 link-underline link-underline-opacity-25" label="{{s.full_name}}">{{s.first_name}} {{s.last_name}}</a></li>
+                    <li><a class="tt link-offset-2 link-underline link-underline-opacity-25" label="{{s.full_name}}" role="button">{{s.first_name}} {{s.last_name}}</a></li>
                 {% endfor %}
             </ul>
         </td>

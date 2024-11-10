@@ -1,0 +1,7 @@
+roles:
+  - role: użytkownik
+    description: 'https://myportal.worldline-solutions.com/merchantportal'
+    users:
+    - login: mp6179-6070
+      first_name: Robert
+      last_name: Postek
