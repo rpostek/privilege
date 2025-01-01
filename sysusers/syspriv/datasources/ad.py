@@ -18,7 +18,7 @@ class AdDatasource():
             ad_containers = models.AdContainer.objects.all()
             models.AdPerson.objects.all().delete()
             for ad_container in ad_containers:
-                ps_script = 'Get-ADUser -Filter * -SearchBase "' + ad_container.string + '" -Properties SamAccountName,Name,GivenName,Surname,Title,Department,Office,Manager,emailaddress,OfficePhone,MobilePhone,POBox,ThumbnailPhoto \
+                ps_script = 'Get-ADUser -Filter * -SearchBase "' + ad_container.string + '" -SearchScope OneLevel -Properties SamAccountName,Name,GivenName,Surname,Title,Department,Office,Manager,emailaddress,OfficePhone,MobilePhone,POBox,ThumbnailPhoto \
                             | Select-Object -Property SamAccountName,Name,GivenName,Surname,Title,Department,Office,Manager,emailaddress,OfficePhone,MobilePhone,POBox, @{label="Thumb"; expression = {[Convert]::ToBase64String($_.ThumbnailPhoto)}} \
                             | convertto-json'
                 ps = subprocess.Popen(["powershell", "-Command", ps_script],
@@ -48,6 +48,12 @@ class AdDatasource():
                                                      mobile_phone=row['MobilePhone'] if row['MobilePhone'] else None,
                                                      room_number=str(row['POBox']) if row['POBox'] else None,
                                                      thumbnail=row['Thumb'] if row['Thumb'] else None)
+
+                            ##########################
+                            if person.login == 'Msmietanka':
+                                continue
+                            ##########################
+
                             person.save()
             views.update_ad_person()
             alerts=[{'type':'primary', 'text':'lista pracowników pomyślnie pobrana z AD'}]
