@@ -25,6 +25,34 @@ Zmiana uprawnień
 <div>
     <fieldset>
   <legend>Uprawnienia:</legend>
+        <div style="padding: 10px;">
+            Skopiuj uprawnienia pracownika
+            <select id="id_clone_person">
+            {% for p in persons %}
+              <option value={{p.pk}}>{{p}}</option>
+            {% endfor %}
+            </select>
+            <button name="load_priv" type="button" type="button" class="btn btn-secondary" value="load_priv" onclick="LoadPrivileges()">kopiuj</button>
+        </div>
+<script>
+    function LoadPrivileges() {
+        var chkboxes = document.getElementsByName("1-roles");
+        var count = chkboxes.length;
+        var selectedPerson = document.getElementById("id_clone_person");
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "GET", "/syspriv/personpriv/" + selectedPerson.value + "/", false );
+        xmlHttp.send( null );
+        var privs = xmlHttp.responseText.split(",");
+        for(var i = 0; i < count; i++){
+            if (privs.includes(chkboxes[i].value)) {
+                chkboxes[i].checked = true;
+            }
+            else {
+                chkboxes[i].checked = false;
+            }
+        }
+    }
+</script>
 <div id="id_1-roles">
     <table class="table table-sm">
        {% for role in wizard.form.fields.roles.choices.queryset %}
@@ -46,7 +74,7 @@ Zmiana uprawnień
 </div>
     <div style="padding: 10px;">
   {% if wizard.steps.prev %}
-    <button name="wizard_goto_step" type="submit" type="button" class="btn btn-secondary" value="{{ wizard.steps.first }}">&lt;&lt;</button>
+  <button name="wizard_goto_step" type="submit" type="button" class="btn btn-secondary" value="{{ wizard.steps.first }}">&lt;&lt;</button>
   <button name="wizard_goto_step" type="submit" class="btn btn-secondary" value="{{ wizard.steps.prev }}">&lt;</button>
   {% endif %}
   <input type="submit" class="btn btn-primary" value="OK"/>

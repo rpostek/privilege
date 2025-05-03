@@ -29,6 +29,7 @@ urlpatterns = [
     #path('login/', views.login_redirect,name='login'),
     path('logout/', LogoutView.as_view(next_page='login'),name='logout'),
     path('summary/', views.SummaryView.as_view(), name='summary'),
+    path('personpriv/<int:id>/', views.PersonPrivileges.as_view(), name='personpriv'),
     #    path('l/', views.reset, name='reset'),
 
 ]

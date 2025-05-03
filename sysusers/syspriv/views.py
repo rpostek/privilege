@@ -18,12 +18,13 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.contrib import messages
+from django.http import HttpResponse
 from .auth.auth import get_logged_ad_user #, DomainBackend
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from .mail.mail import send_commision
 from django.db.models import F, Value, Func
-
+import json
 class NotAllowed(Exception):
     pass
 
@@ -341,6 +342,14 @@ class CommissionCreateView(SessionWizardView):
                             'roles_remove': roles_remove})
         elif self.steps.current == '1':
             context.update({'person': self.get_cleaned_data_for_step('0')['person']})
+
+            # dodaj listę użytkowników do uprawnień do skopiowania
+            if self.request.user.groups.filter(name='master').exists():
+                sq = models.AdPerson.objects.all().exclude(login__exact='brak')
+            else:
+                ad_logged_user = models.AdPerson.objects.get(login__iexact=self.request.user.username)
+                sq = models.AdPerson.objects.filter(department=ad_logged_user.department, office=ad_logged_user.office)
+            context.update({'persons': sq})
         return context
 
     def get_template_names(self):
@@ -385,7 +394,6 @@ class CommissionDetailView(DetailView):
         return q.order_by('-display_id')
 
 
-
 class MyLoginView(LoginView):
     redirect_authenticated_user = True
     template_name = 'syspriv/login.html'
@@ -403,6 +411,18 @@ def login_redirect(request):
         login(request, User.objects.get(username=username))
     return redirect('/syspriv/')
 
+
+@method_decorator(login_required, name='dispatch')
+class PersonPrivileges(View):
+    def get(self, request, id):
+        try:
+            adperson = models.AdPerson.objects.get(id=id)
+        except ObjectDoesNotExist:
+            adperson = None
+        logins = models.Account.objects.filter(adperson=adperson)
+        roles = list(models.Role.objects.filter(accounts__in=logins).values_list(flat=True))
+        roles_str = [str(r) for r in roles]
+        return HttpResponse(','.join(roles_str), content_type="text/html")
 
 
 '''def reset(request):
