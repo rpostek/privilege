@@ -19,7 +19,6 @@ from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.http import HttpResponse
-from .auth.auth import get_logged_ad_user #, DomainBackend
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from .mail.mail import send_commision
@@ -33,10 +32,7 @@ class HomeView(View):
     def get(self, request):
         data = {}
         try:
-            username = get_logged_ad_user(request)
-            #ad_logged_user = models.AdPerson.objects.get(login__iexact=request.user.username)
-            ad_logged_user = models.AdPerson.objects.get(login__iexact=username)
-            data.update({'ad_user_raw': str(username)})
+            ad_logged_user = models.AdPerson.objects.get(login__iexact=request.user.username)
             data.update({'ad_user': ad_logged_user})
             data.update({'systems_allowed': models.Department.objects.get(name=ad_logged_user.department).systems.all()})
         except ObjectDoesNotExist:

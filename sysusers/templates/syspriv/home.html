@@ -10,21 +10,24 @@ Home
     <span class="badge bg-success"; style="font-size: 70%;">{{group}}</span>
   {% endfor %}
 </H3>
-<p><i>{{ad_user_raw}}</i></p>
 {% if ad_user %}
-  {{ad_user.first_name}} {{ad_user.last_name}}<br/>
+  <H3>{{ad_user.first_name}} {{ad_user.last_name}}<br/></H3>
   <p><i>{{ ad_user.office }}<br/>{{ ad_user.department }}</i></p>
 
 
   {% if 'master' in groups %}
-  <p>Dostęp do wszystkich systemów</p>
+  <p>Podgląd uprawnień wszystkich użytkowników wszystkich systemów.</p>
   {% else %}
-  <p>Dostęp do systemów:</p>
-  <ul>
-    {% for system in systems_allowed %}
-    <li>{{system}}</li>
-    {% endfor %}
-  </ul>
+    {% if systems_allowed|length > 0 %}
+      <p>Podgląd uprawnień użytkowników z własnego wydziału oraz wszystkich użytkowników następujących systemów:</p>
+      <ul>
+        {% for system in systems_allowed %}
+        <li>{{system}}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Podgląd uprawnień użytkowników wyłącznie z własnego wydziału.</p>
+    {% endif %}
   {% endif %}
 {% endif %}
 {% for alert in alerts %}
@@ -32,15 +35,4 @@ Home
   {{alert.text}}
 </div>
 {% endfor %}
-<hr>
-Weryfikacja następujących systemów:
-<ul>
-  <li>Estima</li>
-  <li>eTW</li>
-  <li>Karta Dużej Rodziny</li>
-  <li>shared mailboxes</li>
-  <li>rorum</li>
-  <li>sms</li>
-</ul>
-wymaga ręcznej aktualizacji plików YAML.
 {% endblock %}
