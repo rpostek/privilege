@@ -4,6 +4,8 @@
 <h3>
     {% if person.thumbnail %}
          <img src="data:image/png;base64, {{person.thumbnail}}" alt="thumb" width="120" height="120" style="border-radius: 10%;"/>
+    {% else %}
+         <img src="/static/person.png" alt="thumb" width="120" height="120" style="border-radius: 10%;"/>
     {% endif %}
     {{person.first_name}} {{person.last_name}}
 </h3>
