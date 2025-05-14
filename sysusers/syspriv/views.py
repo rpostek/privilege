@@ -335,7 +335,8 @@ class CommissionCreateView(SessionWizardView):
             self.storage.extra_data['roles_remove'] = [x.id for x in roles_remove]
             context.update({'person': person_selected,
                             'roles_add': roles_add,
-                            'roles_remove': roles_remove})
+                            'roles_remove': roles_remove,
+                            'roles_old': old_roles_set})
         elif self.steps.current == '1':
             context.update({'person': self.get_cleaned_data_for_step('0')['person']})
 
