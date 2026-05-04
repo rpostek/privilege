@@ -1,0 +1,34 @@
+-- dla Groszków
+create user priv_reader password '...';
+
+grant select on OP_GRUPY to priv_reader;
+grant select on OP_SLFUN to priv_reader;
+grant select on IS_REJESTR to priv_reader;
+grant select on OP_OPFUN to priv_reader;
+grant select on OP_OPER to priv_reader;
+grant select on OP_OPERGRUP to priv_reader;
+
+-- dla Groszka PDA (UmowyFV)
+grant select on B_WYDZIAL_OPER to priv_reader;
+grant select on B_WYDZIALY to priv_reader;
+
+-- dla Groszka PDK (KSZOB)
+grant select on KZ_OPER2SYSTEM to priv_reader;
+
+-- dla Sygnity SR
+create user priv_reader password '...';
+
+grant select on AD_UZYTKOWNICY_MODULY to priv_reader;
+grant select on AD_MODULY_APLIKACJI to priv_reader;
+grant select on AD_UZYTKOWNICY to priv_reader;
+grant select on AD_ROLE to priv_reader;
+
+-- dla PapirusSQL
+create user priv_reader password '...';
+
+grant select on SH_USRGP to priv_reader;
+grant select on SH_USERS to priv_reader;
+grant select on SH_MEMSP to priv_reader;
+
+-- dla optiest
+user ma mieć dostęp do ROLE, PRACOWNICY_ROLE, v_lista_pracownicy

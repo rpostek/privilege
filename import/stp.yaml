@@ -2,253 +2,405 @@ roles:
   - role: Administrator
     description: 'Uprawnienia'
     users:
-    - login: m.kisiel
-      first_name: Małgorzata
-      last_name: Kisiel
     - login: e.bareja
       first_name: Elżbieta
       last_name: Bareja
     - login: admin
       first_name: Admin
       last_name: Admin
-    - login: m.lange
-      first_name: Monika
-      last_name: Lange
     - login: r.postek
       first_name: Robert
       last_name: Postek
+  - role: Użytkownik
+    description: 'Uprawnienia'
+    users:
+    - login: m.kisiel
+      first_name: Małgorzata
+      last_name: Kisiel
+    - login: m.lange
+      first_name: Monika
+      last_name: Lange
+    - login: mroszczynski
+      first_name: Mariusz
+      last_name: Roszczyński
+    - login: ksamulnik
+      first_name: Krzysztof
+      last_name: Samulnik
+    - login: w.pawlak
+      first_name: Wojciech
+      last_name: Pawlak
+    - login: opanas
+      first_name: Olesya
+      last_name: Panas
+    - login: Ma.Kowalczyk
+      first_name: Małgorzata
+      last_name: Kowalczyk
+    - login: Monika.zieba
+      first_name: Monika
+      last_name: Zięba
+    - login: kczapska
+      first_name: Katarzyna
+      last_name: Czapska
+    - login: ujeziak
+      first_name: Urszula
+      last_name: Jeziak
+    - login: ukicia
+      first_name: Urszula
+      last_name: Kicia-Rosa
+    - login: klugowska
+      first_name: Karolina
+      last_name: Ługowska
+    - login: apetruk
+      first_name: Anna
+      last_name: Petruk
+    - login: kszymkowska
+      first_name: Katarzyna
+      last_name: Szymkowska
+    - login: jtosko
+      first_name: Joanna
+      last_name: Tośko
+    - login: mtycinska
+      first_name: Małgorzata
+      last_name: Tycińska
   - role: 'Architektura i urbanistyka'
     description: 'Grupa opłat'
     users:
-    - login: m.kisiel
-      first_name: Małgorzata
-      last_name: Kisiel
-    - login: e.bareja
-      first_name: Elżbieta
-      last_name: Bareja
     - login: admin
       first_name: Admin
       last_name: Admin
     - login: m.lange
       first_name: Monika
       last_name: Lange
-    - login: r.postek
-      first_name: Robert
-      last_name: Postek
+    - login: mroszczynski
+      first_name: Mariusz
+      last_name: Roszczyński
+    - login: ksamulnik
+      first_name: Krzysztof
+      last_name: Samulnik
+    - login: w.pawlak
+      first_name: Wojciech
+      last_name: Pawlak
+    - login: opanas
+      first_name: Olesya
+      last_name: Panas
+    - login: Ma.Kowalczyk
+      first_name: Małgorzata
+      last_name: Kowalczyk
+    - login: Monika.zieba
+      first_name: Monika
+      last_name: Zięba
   - role: 'Formularz wielojęzyczny'
     description: 'Grupa opłat'
     users:
-    - login: m.kisiel
-      first_name: Małgorzata
-      last_name: Kisiel
-    - login: e.bareja
-      first_name: Elżbieta
-      last_name: Bareja
     - login: admin
       first_name: Admin
       last_name: Admin
     - login: m.lange
       first_name: Monika
       last_name: Lange
-    - login: r.postek
-      first_name: Robert
-      last_name: Postek
   - role: 'Geodezja i kataster'
     description: 'Grupa opłat'
     users:
-    - login: m.kisiel
-      first_name: Małgorzata
-      last_name: Kisiel
-    - login: e.bareja
-      first_name: Elżbieta
-      last_name: Bareja
     - login: admin
       first_name: Admin
       last_name: Admin
     - login: m.lange
       first_name: Monika
       last_name: Lange
-    - login: r.postek
-      first_name: Robert
-      last_name: Postek
+    - login: mroszczynski
+      first_name: Mariusz
+      last_name: Roszczyński
+    - login: ksamulnik
+      first_name: Krzysztof
+      last_name: Samulnik
+    - login: w.pawlak
+      first_name: Wojciech
+      last_name: Pawlak
+    - login: opanas
+      first_name: Olesya
+      last_name: Panas
+    - login: Ma.Kowalczyk
+      first_name: Małgorzata
+      last_name: Kowalczyk
+    - login: Monika.zieba
+      first_name: Monika
+      last_name: Zięba
   - role: 'Karta Dużej Rodziny'
     description: 'Grupa opłat'
     users:
-    - login: m.kisiel
-      first_name: Małgorzata
-      last_name: Kisiel
-    - login: e.bareja
-      first_name: Elżbieta
-      last_name: Bareja
     - login: admin
       first_name: Admin
       last_name: Admin
     - login: m.lange
       first_name: Monika
       last_name: Lange
-    - login: r.postek
-      first_name: Robert
-      last_name: Postek
+    - login: mroszczynski
+      first_name: Mariusz
+      last_name: Roszczyński
+    - login: ksamulnik
+      first_name: Krzysztof
+      last_name: Samulnik
+    - login: w.pawlak
+      first_name: Wojciech
+      last_name: Pawlak
+    - login: opanas
+      first_name: Olesya
+      last_name: Panas
+    - login: Ma.Kowalczyk
+      first_name: Małgorzata
+      last_name: Kowalczyk
+    - login: Monika.zieba
+      first_name: Monika
+      last_name: Zięba
   - role: 'Kaucje Gwarancje Wadium'
     description: 'Grupa opłat'
     users:
-    - login: m.kisiel
-      first_name: Małgorzata
-      last_name: Kisiel
-    - login: e.bareja
-      first_name: Elżbieta
-      last_name: Bareja
     - login: admin
       first_name: Admin
       last_name: Admin
     - login: m.lange
       first_name: Monika
       last_name: Lange
-    - login: r.postek
-      first_name: Robert
-      last_name: Postek
   - role: 'Ochrona środowiska'
     description: 'Grupa opłat'
     users:
-    - login: m.kisiel
-      first_name: Małgorzata
-      last_name: Kisiel
-    - login: e.bareja
-      first_name: Elżbieta
-      last_name: Bareja
     - login: admin
       first_name: Admin
       last_name: Admin
     - login: m.lange
       first_name: Monika
       last_name: Lange
-    - login: r.postek
-      first_name: Robert
-      last_name: Postek
+    - login: mroszczynski
+      first_name: Mariusz
+      last_name: Roszczyński
+    - login: ksamulnik
+      first_name: Krzysztof
+      last_name: Samulnik
+    - login: w.pawlak
+      first_name: Wojciech
+      last_name: Pawlak
+    - login: opanas
+      first_name: Olesya
+      last_name: Panas
+    - login: Ma.Kowalczyk
+      first_name: Małgorzata
+      last_name: Kowalczyk
+    - login: Monika.zieba
+      first_name: Monika
+      last_name: Zięba
   - role: 'Odpady komunalne'
     description: 'Grupa opłat'
     users:
-    - login: m.kisiel
-      first_name: Małgorzata
-      last_name: Kisiel
-    - login: e.bareja
-      first_name: Elżbieta
-      last_name: Bareja
     - login: admin
       first_name: Admin
       last_name: Admin
     - login: m.lange
       first_name: Monika
       last_name: Lange
-    - login: r.postek
-      first_name: Robert
-      last_name: Postek
+    - login: mroszczynski
+      first_name: Mariusz
+      last_name: Roszczyński
+    - login: ksamulnik
+      first_name: Krzysztof
+      last_name: Samulnik
+    - login: w.pawlak
+      first_name: Wojciech
+      last_name: Pawlak
+    - login: opanas
+      first_name: Olesya
+      last_name: Panas
+    - login: Ma.Kowalczyk
+      first_name: Małgorzata
+      last_name: Kowalczyk
+    - login: Monika.zieba
+      first_name: Monika
+      last_name: Zięba
   - role: 'Opłaty na rzecz m.st. Warszawy'
     description: 'Grupa opłat'
     users:
-    - login: m.kisiel
-      first_name: Małgorzata
-      last_name: Kisiel
-    - login: e.bareja
-      first_name: Elżbieta
-      last_name: Bareja
     - login: admin
       first_name: Admin
       last_name: Admin
     - login: m.lange
       first_name: Monika
       last_name: Lange
-    - login: r.postek
-      first_name: Robert
-      last_name: Postek
+    - login: mroszczynski
+      first_name: Mariusz
+      last_name: Roszczyński
+    - login: ksamulnik
+      first_name: Krzysztof
+      last_name: Samulnik
+    - login: w.pawlak
+      first_name: Wojciech
+      last_name: Pawlak
+    - login: opanas
+      first_name: Olesya
+      last_name: Panas
+    - login: Ma.Kowalczyk
+      first_name: Małgorzata
+      last_name: Kowalczyk
+    - login: Monika.zieba
+      first_name: Monika
+      last_name: Zięba
   - role: 'Opłaty skarbowe'
     description: 'Grupa opłat'
     users:
     - login: m.kisiel
       first_name: Małgorzata
       last_name: Kisiel
-    - login: e.bareja
-      first_name: Elżbieta
-      last_name: Bareja
     - login: admin
       first_name: Admin
       last_name: Admin
     - login: m.lange
       first_name: Monika
       last_name: Lange
-    - login: r.postek
-      first_name: Robert
-      last_name: Postek
-  - role: 'Podatki'
-    description: 'Grupa opłat'
-    users:
+    - login: mroszczynski
+      first_name: Mariusz
+      last_name: Roszczyński
+    - login: ksamulnik
+      first_name: Krzysztof
+      last_name: Samulnik
+    - login: w.pawlak
+      first_name: Wojciech
+      last_name: Pawlak
+    - login: opanas
+      first_name: Olesya
+      last_name: Panas
+    - login: Ma.Kowalczyk
+      first_name: Małgorzata
+      last_name: Kowalczyk
+    - login: Monika.zieba
+      first_name: Monika
+      last_name: Zięba
+    - login: kczapska
+      first_name: Katarzyna
+      last_name: Czapska
+    - login: ujeziak
+      first_name: Urszula
+      last_name: Jeziak
+    - login: ukicia
+      first_name: Urszula
+      last_name: Kicia-Rosa
     - login: m.kisiel
       first_name: Małgorzata
       last_name: Kisiel
-    - login: e.bareja
-      first_name: Elżbieta
-      last_name: Bareja
+    - login: klugowska
+      first_name: Karolina
+      last_name: Ługowska
+    - login: apetruk
+      first_name: Anna
+      last_name: Petruk
+    - login: kszymkowska
+      first_name: Katarzyna
+      last_name: Szymkowska
+    - login: jtosko
+      first_name: Joanna
+      last_name: Tośko
+    - login: mtycinska
+      first_name: Małgorzata
+      last_name: Tycińska
+  - role: 'Podatki'
+    description: 'Grupa opłat'
+    users:
     - login: admin
       first_name: Admin
       last_name: Admin
     - login: m.lange
       first_name: Monika
       last_name: Lange
-    - login: r.postek
-      first_name: Robert
-      last_name: Postek
+    - login: mroszczynski
+      first_name: Mariusz
+      last_name: Roszczyński
+    - login: ksamulnik
+      first_name: Krzysztof
+      last_name: Samulnik
+    - login: w.pawlak
+      first_name: Wojciech
+      last_name: Pawlak
+    - login: opanas
+      first_name: Olesya
+      last_name: Panas
+    - login: Ma.Kowalczyk
+      first_name: Małgorzata
+      last_name: Kowalczyk
+    - login: Monika.zieba
+      first_name: Monika
+      last_name: Zięba
   - role: 'Prawo jazdy'
     description: 'Grupa opłat'
     users:
     - login: m.kisiel
       first_name: Małgorzata
       last_name: Kisiel
-    - login: e.bareja
-      first_name: Elżbieta
-      last_name: Bareja
     - login: admin
       first_name: Admin
       last_name: Admin
     - login: m.lange
       first_name: Monika
       last_name: Lange
-    - login: r.postek
-      first_name: Robert
-      last_name: Postek
+    - login: kczapska
+      first_name: Katarzyna
+      last_name: Czapska
+    - login: ujeziak
+      first_name: Urszula
+      last_name: Jeziak
+    - login: ukicia
+      first_name: Urszula
+      last_name: Kicia-Rosa
+    - login: klugowska
+      first_name: Karolina
+      last_name: Ługowska
+    - login: apetruk
+      first_name: Anna
+      last_name: Petruk
+    - login: kszymkowska
+      first_name: Katarzyna
+      last_name: Szymkowska
   - role: 'Rejestracja i wycofanie z ruchu'
     description: 'Grupa opłat'
     users:
     - login: m.kisiel
       first_name: Małgorzata
       last_name: Kisiel
-    - login: e.bareja
-      first_name: Elżbieta
-      last_name: Bareja
     - login: admin
       first_name: Admin
       last_name: Admin
     - login: m.lange
       first_name: Monika
       last_name: Lange
-    - login: r.postek
-      first_name: Robert
-      last_name: Postek
+    - login: ujeziak
+      first_name: Urszula
+      last_name: Jeziak
+    - login: ukicia
+      first_name: Urszula
+      last_name: Kicia-Rosa
+    - login: klugowska
+      first_name: Karolina
+      last_name: Ługowska
+    - login: apetruk
+      first_name: Anna
+      last_name: Petruk
+    - login: kszymkowska
+      first_name: Katarzyna
+      last_name: Szymkowska
   - role: 'Udostępnianie danych'
     description: 'Grupa opłat'
     users:
     - login: m.kisiel
       first_name: Małgorzata
       last_name: Kisiel
-    - login: e.bareja
-      first_name: Elżbieta
-      last_name: Bareja
     - login: admin
       first_name: Admin
       last_name: Admin
     - login: m.lange
       first_name: Monika
       last_name: Lange
-    - login: r.postek
-      first_name: Robert
-      last_name: Postek
-      
+    - login: kczapska
+      first_name: Katarzyna
+      last_name: Czapska
+    - login: jtosko
+      first_name: Joanna
+      last_name: Tośko
+    - login: mtycinska
+      first_name: Małgorzata
+      last_name: Tycińska

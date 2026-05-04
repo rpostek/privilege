@@ -1,0 +1,10 @@
+CREATE DATABASE syspriv
+    WITH
+    OWNER = syspriv
+    TEMPLATE = template0
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'pl_PL.UTF8'
+    LC_CTYPE = 'pl_PL.UTF8'
+    LOCALE_PROVIDER = 'libc'
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
